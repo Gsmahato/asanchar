@@ -7,24 +7,18 @@ import { PiClockClockwiseFill } from "react-icons/pi";
 import ANSU from "../public/ANSU.jpg";
 import RightBanner from "../public/rightbanner.gif";
 
-// async function getNews() {
-//   const response = await fetch("https://www.bimaabazar.com/newsportal/news/");
-//   const data = await response.json();
-//   return data;
-// }
+
 export default function Mukhya () {
-  // const news = await getNews();
 
   return (
     <>
       <section className={styles.mukhya_section}>
         <div className={styles.mukhya_container}>
-          {/* {news.map((mukhya)=>( */}
           <div className={styles.col_left}>
             <div className={styles.mukhya_news_grid}>
               <div className={styles.span_7}>
                 <div className={styles.spot_news}>
-                  <Link href="/mukhya">
+                  <Link href={`/news/28`}>
                     <Image
                       className={styles.M_image}
                       src={ANSU}

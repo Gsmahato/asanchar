@@ -5,3 +5,7 @@ body,html{
   padding: 0;
   font-size: 1rem;
 }
+.admin-page {
+  background-color: #212121;
+  height: auto;
+}

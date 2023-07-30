@@ -1,0 +1,95 @@
+.admin_container{
+    background: #121212;
+    border: 1px solid #272727;
+    border-radius: 4px;
+    width: 28em;
+    overflow: hidden;
+    min-width: 300px;
+    margin: 100px auto;
+    height: auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.header{
+    flex-shrink: 0;
+    height: auto;
+    padding: 15px 16px;
+    justify-content: center;
+    width: auto;
+    display: flex;
+    align-items: center;
+    background: #417690;
+    color: #ffc;
+}
+.branding>h1{
+    font-size: 1.125rem;
+    margin: 0;
+    padding: 0;
+
+}
+.site_name>a{
+    text-decoration: none;
+    color: #ffc;
+
+}
+.main{
+    display: flex;
+    flex: 1 0 auto;
+}
+.content{
+    flex: 1 0;
+    max-width: 100%;
+}
+.colM{
+    padding: 20px 20px 0;
+
+}
+.content_main{
+    float: left;
+    width: 100%;
+}
+.content_main>form{
+    margin: 0;
+    padding: 0;
+}
+.comntent_main>input{
+    margin: 2px 0;
+    padding: 2px 3px;
+    vertical-align: middle;
+    font-weight: normal;
+    font-size: 0.8125rem;
+}
+.form_row{
+    padding: 4px 0;
+}
+.form_row>label{
+    display: block;
+    line-height: 2em;
+    color: #fff;
+}
+.form_row>input{
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.submit_row{
+    padding: 1em 0 2em 0;
+    margin: 0;
+    text-align: center;
+}
+/* #264b5d */
+.submit_row>input{
+    margin: 2px 0;
+    padding: 2px 3px;
+    vertical-align: middle;
+    font-weight: normal;
+    font-size: 0.8125rem;
+    background: #264b5d;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.15s;
+}
