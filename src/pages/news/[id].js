@@ -1,36 +1,29 @@
 import React from "react";
 
-export default function Newspage({ news }) {
-    return (
-        <div>{news.title}</div>
-    );
-  }
-  
-  export async function getStaticPaths() {
-    const apiUrl = "https://www.bimaabazar.com/newsportal/news/";
-    const res = await fetch(apiUrl);
-    const newsList = await res.json();
-  
-    const paths = newsList.map((news) => ({
-      params: { id: news.id.toString() },
-    }));
-  
-    return {
-      paths,
-      fallback: true, 
-    };
-  }
-  
-  export async function getStaticProps({ params }) {
-    const id = params.id;
-  
-    const apiUrl = `https://www.bimaabazar.com/newsportal/news/${id}`;
-    const res = await fetch(apiUrl);
-    const news = await res.json();
-  
-    return {
-      props: {
-        news,
-      },
-    };
-  }
+function Newspage({ news }) {
+  return (
+    <div>{news.title}</div>
+  );
+}
+
+export async function getStaticPaths() {
+  const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
+  const newsList = await res.json();
+
+  const paths = newsList.map((news) => ({
+    params: { id: news.id.toString() },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const res = await fetch(
+    `https://www.bimaabazar.com/newsportal/news/${params.id}`
+  );
+  const news = await res.json();
+
+  return { props: { news } };
+}
+
+export default Newspage;
