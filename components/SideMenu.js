@@ -2,7 +2,7 @@ import React from "react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 
-export default async function SideMenu({ onClose }) {
+export default function SideMenu({ onClose }) {
   const handleCloseMenu = () => {
     onClose();
   };
@@ -42,15 +42,6 @@ export default async function SideMenu({ onClose }) {
               <Link href="/">प्रवास</Link>
             </li>
           </ul>
-          <Link className={styles.english_edition_menu} href="/">
-            English
-          </Link>
-          <Link
-            className={styles.election_edition_menu}
-            href="https://election.onlinekhabar.com/"
-          >
-            चुनाव २०७९
-          </Link>
         </div>
       </div>
     </>

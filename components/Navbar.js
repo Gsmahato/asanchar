@@ -1,42 +1,12 @@
-"use client";
 import React, { useState } from "react";
-// import { useRouter } from "next/navigation";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import SideMenu from "./SideMenu";
 import { PiClockClockwiseFill, PiTrendUp, PiUserCircle } from "react-icons/pi";
 import { RiMenuLine, RiMenu2Line } from "react-icons/ri";
 
-// async function getCategory() {
-//   const res = await fetch("https://www.bimaabazar.com/newsportal/categories/", {
-//     next: { revalidate: 2 },
-//   });
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch data");
-//   }
-
-//   return res.json();
-// }
-
 export default function Navbar() {
   const [showSideMenu, setShowSideMenu] = useState(false);
-  // const router = useRouter();
-
-  // useEffect(() => {
-  //   const fetchMenuItems = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "https://www.bimaabazar.com/newsportal/categories/"
-  //       );
-  //       const data = await response.json();
-  //       setOtherMenuItems(data);
-  //     } catch (error) {
-  //       console.error("Error fetching menu items:", error);
-  //     }
-  //   };
-
-  //   fetchMenuItems();
-  // }, []);
 
   const handleMenuClick = () => {
     setShowSideMenu(!showSideMenu);
@@ -45,11 +15,6 @@ export default function Navbar() {
   const handleCloseMenu = () => {
     setShowSideMenu(false);
   };
-
-  // const handleMenuItemClick = (categoryID) => {
-  //   router.push(`/category/${categoryID}`);
-  // };
-  // const cat = await getCategory();
 
   return (
     <>
@@ -60,15 +25,36 @@ export default function Navbar() {
               <li className={styles.menu_item}>
                 <Link href="/">होमपेज</Link>
               </li>
-              {/* {cat.map((item) => ( */}
-                <li
-                  // key={item.id}
-                  className={styles.menu_item}
-                  // onClick={() => handleMenuItemClick(item.id)}
-                >
-                  name
-                </li>
-              {/* ))} */}
+              <li className={styles.menu_item}>
+                <Link href="/samachar">समाचार</Link>
+              </li>
+              <li className={styles.menu_item}>
+                <Link href="/rajniti">राजनीति</Link>
+              </li>
+              <li className={styles.menu_item}>
+                <Link href="/aarthik">आर्थिक</Link>
+              </li>
+              <li className={styles.menu_item}>
+                <Link href="/bigyanprabidhi">विज्ञान प्रविधि</Link>
+              </li>
+              <li className={styles.menu_item}>
+                <Link href="/swastha">स्वास्थ्य</Link>
+              </li>
+              <li className={styles.menu_item}>
+                <Link href="/khelkud">खेलकुद</Link>
+              </li>
+              <li className={styles.menu_item}>
+                <Link href="/bichar">विचार</Link>
+              </li>
+              <li className={styles.menu_item}>
+                <Link href="/antarastriya">अन्तराष्ट्रिय</Link>
+              </li>
+              <li className={styles.menu_item}>
+                <Link href="/antarbarta">अन्तर्वार्ता</Link>
+              </li>
+              <li className={styles.menu_item}>
+                <Link href="/manoranjan">मनोरञ्जन / भिडियो</Link>
+              </li>
             </ul>
             {/* <Link className={styles.english_edition} href="/">
               English
@@ -100,7 +86,7 @@ export default function Navbar() {
                   <RiMenuLine />
                 </i>
               </div>
-              {/* {showSideMenu && <SideMenu onClose={handleCloseMenu} />} */}
+              {showSideMenu && <SideMenu onClose={handleCloseMenu} />}
             </div>
           </div>
         </div>

@@ -1,8 +1,16 @@
 import React from "react";
+import styles from "@/styles/Home.module.css"
+import Image from "next/image";
 
 function Newspage({ news }) {
   return (
-    <div>{news.title}</div>
+    <div className={styles.latest}>
+      <h4>{news.title}</h4>
+      <div>
+        <Image src={`https://www.bimaabazar.com/${news.image1}`} alt="" width={1000} height={600} />
+      </div>
+      <div>{news.content}</div>
+    </div>
   );
 }
 
