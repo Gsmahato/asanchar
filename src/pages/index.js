@@ -1,8 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
-import Navbar from '../../components/Navbar'
+// import { Inter } from 'next/font/google'
+// import styles from '@/styles/Home.module.css'
 import Mukhya from '../../components/Mukhya'
 import Entertainment from '../../components/Entertainment'
 import Latestnews from '../../components/Latestnews'
@@ -12,7 +11,7 @@ import Rajniti from '../../components/Rajniti'
 import BigyanPrabhidhi from '../../components/BigyanPrabhidhi'
 import Khelkud from '../../components/Khelkud'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({newsData}) {
   return (
