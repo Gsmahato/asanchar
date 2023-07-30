@@ -1,11 +1,8 @@
 import React from "react";
-import NewsDetail from "../../../components/NewsDetail";
 
 export default function Newspage({ news }) {
     return (
-      <div>
-        <NewsDetail news={news} />
-      </div>
+        <div>{news.title}</div>
     );
   }
   
