@@ -37,7 +37,7 @@ export default function Home({newsData}) {
   )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
 
   const newsData = await res.json();
