@@ -56,15 +56,6 @@ export default function Navbar() {
                 <Link href="/manoranjan">मनोरञ्जन / भिडियो</Link>
               </li>
             </ul>
-            {/* <Link className={styles.english_edition} href="/">
-              English
-            </Link> */}
-            {/* <Link
-              className={styles.election_edition}
-              href="https://election.onlinekhabar.com/"
-            >
-              चुनाव २०७९
-            </Link> */}
             <div className={styles.user_activity}>
               <div className={styles.latest_news}>
                 <i className={styles.activity_icon}>

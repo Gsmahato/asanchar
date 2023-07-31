@@ -1,26 +1,11 @@
 import React from "react";
-import styles from "@/styles/Home.module.css"
+import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import logo from "../public/abiralsancharlogo.svg";
 import Image from "next/image";
-// import { useRouter } from "next/navigation";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
-// async function getCategory() {
-//   const res = await fetch("https://www.bimaabazar.com/newsportal/categories/",{next:{revalidate:1}});
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch data");
-//   }
-
-//   return res.json();
-// }
 
 export default function Footer() {
-  // const router = useRouter();
-
-  // const cat = await getCategory();
-  // const handleMenuItemClick = (categoryID) => {
-  //   router.push(`/category/${categoryID}`);
-  // };
   return (
     <>
       <footer className={styles.site_footer}>
@@ -30,16 +15,33 @@ export default function Footer() {
               <h4>समाचार</h4>
 
               <ul>
-                {/* {cat.map((category) => ( */}
-                  <li
-                    className={styles.footerdata}
-                    // key={category.id}
-                    onClick={() => handleMenuItemClick(category.id)}
-                  >
-                    {/* {category.name} */}
-                    hello
-                  </li>
-                {/* ))} */}
+                <li className={styles.footerdata}>
+                  <Link href="/rajniti">राजनीति</Link>
+                </li>
+                <li className={styles.footerdata}>
+                <Link href="/aarthik">आर्थिक</Link>
+                </li>
+                <li className={styles.footerdata}>
+                <Link href="/bigyanprabidhi">विज्ञान प्रविधि</Link>
+                </li>
+                <li className={styles.footerdata}>
+                <Link href="/swastha">स्वास्थ्य</Link>
+                </li>
+                <li className={styles.footerdata}>
+                <Link href="/khelkud">खेलकुद</Link>
+                </li>
+                <li className={styles.footerdata}>
+                <Link href="/bichar">विचार</Link>
+                </li>
+                <li className={styles.footerdata}>
+                <Link href="/antarastriya">अन्तराष्ट्रिय</Link>
+                </li>
+                <li className={styles.footerdata}>
+                <Link href="/antarbarta">अन्तर्वार्ता</Link>
+                </li>
+                <li className={styles.footerdata}>
+                <Link href="/manoranjan">मनोरञ्जन / भिडियो</Link>
+                </li>
               </ul>
             </div>
             <div>
@@ -130,14 +132,14 @@ export default function Footer() {
 
             <ul>
               {/* {cat.map((category) => ( */}
-                <li
-                  className={styles.footerdata}
-                  // key={category.id}
-                  onClick={() => handleMenuItemClick(category.id)}
-                >
-                  {/* {category.name} */}
-                  hello
-                </li>
+              <li
+                className={styles.footerdata}
+                // key={category.id}
+                onClick={() => handleMenuItemClick(category.id)}
+              >
+                {/* {category.name} */}
+                hello
+              </li>
               {/* ))} */}
             </ul>
           </div>
