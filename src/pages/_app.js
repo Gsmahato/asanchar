@@ -10,7 +10,7 @@ import Hottopic from "../../components/Hottopic";
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const isAdminPage = router.pathname === "/admin";
-  const isDashboardPage = router.pathname === "/dashboard";
+  const isDashboardPage = router.pathname.startsWith("/dashboard");
 
   useEffect(() => {
     if (isAdminPage || isDashboardPage) {
