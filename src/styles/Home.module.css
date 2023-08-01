@@ -2577,7 +2577,8 @@ white-space: nowrap;
 }
 .entry_title1{
   display: block;
-  font-size: 2.5rem;
+  font-size: 2rem;
+  margin: 0 0 0 0;
 }
 .post_title_left{
   display: none;
@@ -2593,6 +2594,9 @@ height: 1.5rem;
 }
 .comment_number>.comment_num{
     font-size: 1.5rem;
+}
+.entry_title_wrapper{
+  padding: 0;
 }
 .comm_icon1>svg{
   width: 1.5rem;
@@ -2647,6 +2651,11 @@ height: 1.5rem;
 .post_thumbnails>img{
   width: 100%;
   height: 100%;
+}
+.post_content_wrap>p{
+  align-items: center;
+  font-weight: 400;
+  line-height: 1.8
 }
    
    
