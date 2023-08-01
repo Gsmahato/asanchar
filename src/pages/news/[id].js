@@ -7,7 +7,6 @@ import {
   FaRegCommentAlt,
   FaTwitter,
   FaFacebook,
-  FaInstagram,
   FaFacebookMessenger,
   FaWhatsapp,
   FaRegClock,
@@ -18,16 +17,19 @@ function Newspage({ news }) {
   const [isScrollingDown, setIsScrollingDown] = useState(false);
   const [titleFontSize, setTitleFontSize] = useState("65px");
   const scrollThreshold = 100;
-  const handleScroll = () => {
-    const scrollY = window.scrollY;
-    if (scrollY > scrollThreshold && !isScrollingDown) {
-      setIsScrollingDown(true);
-    } else if (scrollY <= scrollThreshold && isScrollingDown) {
-      setIsScrollingDown(false);
-    }
 
-    const newSize = isScrollingDown ? 32 : 65;
-    setTitleFontSize(`${newSize}px`);
+  const handleScroll = () => {
+    if (window.innerWidth > 766) {
+      const scrollY = window.scrollY;
+      if (scrollY > scrollThreshold && !isScrollingDown) {
+        setIsScrollingDown(true);
+      } else if (scrollY <= scrollThreshold && isScrollingDown) {
+        setIsScrollingDown(false);
+      }
+  
+      const newSize = isScrollingDown ? "26px" : "65px";
+      setTitleFontSize(newSize);
+    }
   };
 
   useEffect(() => {
@@ -52,7 +54,7 @@ function Newspage({ news }) {
                   </i>
                 </Link>
                 <span className={styles.comment_num}>0</span>
-                <span>COMMENTS</span>
+                <span className={styles.comments}>COMMENTS</span>
               </div>
               <div className={styles.share_number}>
                 <div className={styles.share_button}>
@@ -70,7 +72,7 @@ function Newspage({ news }) {
                   <div className={styles.fst_btn}>
                     <Link href="/">
                       <i className={styles.comm_icon3}>
-                        <FaInstagram />
+                        <FaFacebook />
                       </i>
                     </Link>
                   </div>
@@ -100,6 +102,58 @@ function Newspage({ news }) {
               >
                 {news.title}
               </h1>
+              <h1
+                className={styles.entry_title1}
+              >
+                {news.title}
+              </h1>
+            </div>
+            <div className={styles.post_title_left1}>
+              <div className={styles.comment_number}>
+                <Link href="/">
+                  <i className={styles.comm_icon}>
+                    <FaRegCommentAlt />
+                  </i>
+                </Link>
+                <span className={styles.comment_num}>0</span>
+                <span className={styles.comments}>COMMENTS</span>
+              </div>
+              <div className={styles.share_number}>
+                <div className={styles.share_button}>
+                  <div className={styles.share_total}>
+                    <span className={styles.st_label}>110</span>
+                    <span className={styles.st_shares}>Shares</span>
+                  </div>
+                  <div className={styles.fst_btn}>
+                    <Link href="/">
+                      <i className={styles.comm_icon1}>
+                        <FaTwitter />
+                      </i>
+                    </Link>
+                  </div>
+                  <div className={styles.fst_btn}>
+                    <Link href="/">
+                      <i className={styles.comm_icon3}>
+                        <FaFacebook/>
+                      </i>
+                    </Link>
+                  </div>
+                  <div className={styles.fst_btn}>
+                    <Link href="/">
+                      <i className={styles.comm_icon4}>
+                        <FaFacebookMessenger />
+                      </i>
+                    </Link>
+                  </div>
+                  <div className={styles.fst_btn}>
+                    <Link href="/">
+                      <i className={styles.comm_icon5}>
+                        <FaWhatsapp />
+                      </i>
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className={styles.middle_title}>
               <div className={styles.entry_header}>
@@ -130,6 +184,7 @@ function Newspage({ news }) {
                 </div>
               </div>
             </div>
+            
             <div className={styles.middle_content}>
               <div className={styles.entry_content}>
                 <div></div>
