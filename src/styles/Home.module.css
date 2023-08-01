@@ -921,6 +921,29 @@ white-space: nowrap;
   font-size: 1.125rem;
   color: #fff;
 }
+.post_title_samachar{
+  background-color: #f3f6f8;
+  flex: 2;
+  align-self: center;
+  padding: 3.75rem;
+  height: 24.1rem;
+  width: 25.81rem;
+  overflow: hidden;
+}
+.post_title_samachar>a{
+  color: #000;
+  width: 20rem;
+  text-decoration: none;
+  font-size: 2.125rem;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+  font-family: mukta,sans-serif;
+}
+.post_title_samachar>p{
+  font-family: mukta,sans-serif;
+  font-size: 1.125rem;
+  color: #000;
+}
 .post_title_3{
   display: flex;
   background-color: #f3f6f8;
@@ -1811,6 +1834,20 @@ white-space: nowrap;
   font-size: 1.125rem;
   color: #fff;
 }
+.post_title_samachar>a{
+  color: #000000;
+  width: 15rem;
+  text-decoration: none;
+  font-size: 2.125rem;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+  font-family: mukta,sans-serif;
+}
+.post_title_samachar>p{
+  font-family: mukta,sans-serif;
+  font-size: 1.125rem;
+  color: #000000;
+}
 .post_title_3{
   background-color: #f3f6f8;
   flex: 2;
@@ -2319,6 +2356,28 @@ white-space: nowrap;
     font-family: mukta,sans-serif;
     font-size: 1.125rem;
     color: #fff;
+    padding-right: 0.5rem;
+  }
+  .post_title_samachar{
+    background-color: #f3f6f8;
+    flex: 2;
+    align-self: center;
+    padding: 1rem;
+    width: 100%;
+  }
+  .post_title_samachar>a>h4{
+    color: #000000;
+    text-decoration: none;
+    font-size: 2rem;
+    line-height: 1.2;
+    font-family: mukta,sans-serif;
+    margin-right: 0.5rem;
+    padding-right: 0.3rem;
+  }
+  .post_title_samachar>p{
+    font-family: mukta,sans-serif;
+    font-size: 1.125rem;
+    color: #000000;
     padding-right: 0.5rem;
   }
   .title_pradesh_num{
