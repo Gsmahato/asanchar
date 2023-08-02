@@ -1,7 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
-// import { Inter } from 'next/font/google'
-// import styles from '@/styles/Home.module.css'
 import Mukhya from "../../components/Mukhya";
 import Entertainment from "../../components/Entertainment";
 import Latestnews from "../../components/Latestnews";
@@ -11,10 +8,10 @@ import Rajniti from "../../components/Rajniti";
 import BigyanPrabhidhi from "../../components/BigyanPrabhidhi";
 import Khelkud from "../../components/Khelkud";
 
-// const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ newsData}) {
+export default function Home({ newsData, mukhyaNews ,samacharNews,aarthikNews,rajnitiNews,bigyanprabidhiNews,entertainmentNews,khelkudNews}) {
   const latestNews = newsData.filter((news) => news.latest);
+  const trendingNews =newsData.filter((news) => news.trending);
 
   return (
     <>
@@ -24,16 +21,16 @@ export default function Home({ newsData}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {latestNews.map((news) => {
+      {latestNews.slice(0, 5).map((news) => {
         return <Latestnews key={news.id} news={news} />;
       })}
-      <Mukhya />
-      <Samachar />
-      <Aarthik />
-      <Rajniti />
-      <Entertainment />
-      <BigyanPrabhidhi />
-      <Khelkud />
+      <Mukhya mukhyaNews={mukhyaNews} />
+      <Samachar  samacharNews={samacharNews} />
+      <Aarthik aarthikNews={aarthikNews}/>
+      <Rajniti rajnitiNews={rajnitiNews} trendingNews={trendingNews}/>
+      <Entertainment entertainmentNews={entertainmentNews}/>
+      <BigyanPrabhidhi bigyanprabidhiNews={bigyanprabidhiNews}/>
+      <Khelkud khelkudNews={khelkudNews}/>
     </>
   );
 }
@@ -41,12 +38,53 @@ export default function Home({ newsData}) {
 export async function getStaticProps() {
   const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
 
-  const newsData = await res.json();
-  // const category = [...new Set(products.map((product) => product.category))];
+  let newsData = await res.json();
+  newsData = newsData.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
+  let mukhyaNews = newsData.filter((news) => news.category === 18);
+  mukhyaNews = mukhyaNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+  let samacharNews = newsData.filter((news) => news.category === 8);
+  samacharNews = samacharNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+  let aarthikNews = newsData.filter((news) => news.category === 10);
+  aarthikNews = aarthikNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+  let rajnitiNews = newsData.filter((news) => news.category === 9);
+  rajnitiNews = rajnitiNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+  let entertainmentNews = newsData.filter((news) => news.category === 17);
+  entertainmentNews = entertainmentNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
+  let bigyanprabidhiNews = newsData.filter((news) => news.category === 11);
+  bigyanprabidhiNews = bigyanprabidhiNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
+  let khelkudNews = newsData.filter((news) => news.category === 13);
+  khelkudNews = khelkudNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
 
   return {
     props: {
       newsData,
+      mukhyaNews,
+      samacharNews,
+      aarthikNews,
+      rajnitiNews,
+      entertainmentNews,
+      bigyanprabidhiNews,
+      khelkudNews,
     },
   };
 }

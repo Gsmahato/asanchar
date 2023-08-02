@@ -4,9 +4,6 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import ANSU from "../../public/ANSU.jpg";
-// import prachar from "@/public/prachar.gif";
-// import rightbanner1 from "@/public/rightbanner1.gif";
-// import { MdArrowForwardIos } from "react-icons/md";
 const samachar = () => {
 
   return (

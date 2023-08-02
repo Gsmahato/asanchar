@@ -8,7 +8,14 @@ import prachar from "../public/prachar.gif";
 import rightbanner1 from "../public/rightbanner1.gif";
 import { MdArrowForwardIos } from "react-icons/md";
 
-const Rajniti = () => {
+const Rajniti = ({rajnitiNews,trendingNews}) => {
+  const trendzero = trendingNews[0];
+  const trendone = trendingNews[1];
+  const trendtwo = trendingNews[2];
+  const trendthree = trendingNews[3];
+  const trendfour = trendingNews[4];
+  const rajnitifirst = rajnitiNews[0];
+  const rajnitisecond = rajnitiNews.slice(1, 7);
   return (
     <section className={styles.bijnesh_samachar}>
       <div className={styles.news_container}>
@@ -25,7 +32,7 @@ const Rajniti = () => {
                 <Link href="/">६</Link>
                 <Link href="/">७</Link>
               </ul>
-              <Link href="/pradeshsamachaar">
+              <Link href="/rajniti">
                 <i className={styles.F_arrow}>
                   <MdArrowForwardIos />
                 </i>
@@ -45,15 +52,14 @@ const Rajniti = () => {
             <div className={styles.span_12}>
               <div className={styles.samachar_spot_news}>
                 <div className={styles.post_img}>
-                  <Link href="/">
-                    <Image src={ANSU} alt="" width={580} height={508} />
+                  <Link href={`/news/${rajnitifirst.id}`}>
+                    <Image src={`https://www.bimaabazar.com/${rajnitifirst.image1}`} alt="rajniti" width={580} height={508} />
                   </Link>
                 </div>
                 <div className={styles.post_title_3}>
-                  <Link href="/">
+                  <Link href={`/news/${rajnitifirst.id}`}>
                     <h4>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
+                      {rajnitifirst.title}
                     </h4>
                   </Link>
                 </div>
@@ -63,66 +69,19 @@ const Rajniti = () => {
               className={styles.home_samachar}
               data-device-type="desktop"
             ></div>
-            <div className={styles.span_4}>
+            {rajnitisecond.map((ranews)=>(
+            <div className={styles.span_4} key={ranews.id}>
               <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="" width={276} height={165} />
+                <Link className={styles.pradesh_post_news} href={`/news/${ranews.id}`}>
+                  <Image src={`https://www.bimaabazar.com/${ranews.image1}`} alt="rajniti" width={276} height={165} />
                   <div className={styles.post_content_wrap}>
-                    <h2>दाङमा मोटरसाइकल दुर्घटनामा स्वास्थ्यकर्मीको मृत्यु</h2>
+                    <h2>{ranews.title}</h2>
                   </div>
                 </Link>
               </div>
             </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>दाङमा मोटरसाइकल दुर्घटनामा स्वास्थ्यकर्मीको मृत्यु</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>दाङमा मोटरसाइकल दुर्घटनामा स्वास्थ्यकर्मीको मृत्यु</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>दाङमा मोटरसाइकल दुर्घटनामा स्वास्थ्यकर्मीको मृत्यु</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={digital} alt="" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>दाङमा मोटरसाइकल दुर्घटनामा स्वास्थ्यकर्मीको मृत्यु</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>दाङमा मोटरसाइकल दुर्घटनामा स्वास्थ्यकर्मीको मृत्यु</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
+            ))}
+           
           </div>
         </div>
         <div className={styles.col_right}>
@@ -131,77 +90,73 @@ const Rajniti = () => {
             <ul className={styles.t_news}>
               <li>
                 <div className={styles.p_news}>
-                  <Link href="/">
+                  <Link href={`/news/${trendzero.id}`}>
                     <span className={styles.trending_counter}>१</span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
-                        ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र
-                        कारण पेश गर्न सर्वोच्चको आदेश
+                        {trendzero.title}
                       </h2>
                     </div>
-                    <Image src={ANSU} width={90} height={68} alt="" />
+                    <Image src={`https://www.bimaabazar.com/${trendzero.image1}`} width={90} height={68} alt="trending" />
                   </Link>
                 </div>
               </li>
               <li>
                 <div className={styles.p_news}>
-                  <Link href="/">
+                  <Link href={`/news/${trendone.id}`}>
                     <span className={styles.trending_counter}>२</span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
-                        ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र
-                        कारण पेश गर्न सर्वोच्चको आदेश
+                        {trendone.title}
                       </h2>
                     </div>
-                    <Image src={ANSU} width={90} height={68} alt="" />
+                    <Image src={`https://www.bimaabazar.com/${trendone.image1}`} width={90} height={68} alt="trending" />
                   </Link>
                 </div>
               </li>
               <li>
                 <div className={styles.p_news}>
-                  <Link href="/">
+                  <Link href={`/news/${trendtwo.id}`}>
                     <span className={styles.trending_counter}>३</span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
-                        ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र
-                        कारण पेश गर्न सर्वोच्चको आदेश
+                        {trendtwo.title}
                       </h2>
                     </div>
-                    <Image src={ANSU} width={90} height={68} alt="" />
+                    <Image src={`https://www.bimaabazar.com/${trendtwo.image1}`} width={90} height={68} alt="trending" />
                   </Link>
                 </div>
               </li>
               <li>
                 <div className={styles.p_news}>
-                  <Link href="/">
+                  <Link href={`/news/${trendthree.id}`}>
                     <span className={styles.trending_counter}>४</span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
-                        ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र
-                        कारण पेश गर्न सर्वोच्चको आदेश
+                        {trendthree.title}
                       </h2>
                     </div>
-                    <Image src={ANSU} width={90} height={68} alt="" />
+                    <Image src={`https://www.bimaabazar.com/${trendthree.image1}`} width={90} height={68} alt="trending" />
                   </Link>
                 </div>
               </li>
               <li>
                 <div className={styles.p_news}>
-                  <Link href="/">
+                  <Link href={`/news/${trendfour.id}`}>
                     <span className={styles.trending_counter}>५</span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
-                        ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र
-                        कारण पेश गर्न सर्वोच्चको आदेश
+                        {trendfour.title}
                       </h2>
                     </div>
-                    <Image src={ANSU} width={90} height={68} alt="" />
+                    <Image src={`https://www.bimaabazar.com/${trendfour.image1}`} width={90} height={68} alt="trending" />
                   </Link>
                 </div>
               </li>
+              
             </ul>
           </div>
-          <div className={styles.bijnesh_right_2}>
+          {/* <div className={styles.bijnesh_right_2}>
             <div className={styles.side_ad}>
               <div
                 className={styles.desktop_mukhya_ad}
@@ -220,7 +175,7 @@ const Rajniti = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

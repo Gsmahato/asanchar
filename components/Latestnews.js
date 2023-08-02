@@ -33,7 +33,7 @@ function truncateContent(content, maxWords) {
 }
 
 export default function Latestnews({news}) {
-  
+
   return (
     <section className={styles.latest}>
         <div className={styles.latest_container}>
@@ -86,7 +86,6 @@ export default function Latestnews({news}) {
           {/* Display truncated content */}
           <p className={styles.latest_news_image_description}>
             {truncateContent(news.content, 100)}
-            content
           </p>
         </div>
     </section>

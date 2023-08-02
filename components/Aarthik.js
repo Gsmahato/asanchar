@@ -7,7 +7,22 @@ import prachar from "../public/prachar.gif";
 import rightbanner1 from "../public/rightbanner1.gif";
 import { MdArrowForwardIos } from "react-icons/md";
 
-const Aarthik = () => {
+function truncateContent(content, maxWords) {
+  if (typeof content !== "string") {
+    return "";
+  }
+
+  const words = content.trim().split(" ");
+  const truncated = words.slice(0, maxWords).join(" ");
+  return truncated + (words.length > maxWords ? "..." : "");
+}
+
+const Aarthik = ({aarthikNews}) => {
+  const aarthikfirst = aarthikNews[0];
+  const aarthiksecond = aarthikNews.slice(1, 13);
+  const aarthiklast =aarthikNews.slice(14,20)
+
+
   return (
     <section className={styles.bijnesh_samachar}>
       <div className={styles.news_container}>
@@ -32,7 +47,7 @@ const Aarthik = () => {
                   <li>अर्थनीति</li>
                 </Link>
               </ul>
-              <Link href="/Rajnit">
+              <Link href="/aarthik">
                 <i className={styles.F_arrow}>
                   <MdArrowForwardIos />
                 </i>
@@ -60,22 +75,18 @@ const Aarthik = () => {
             <div className={styles.span_12}>
               <div className={styles.samachar_spot_news}>
                 <div className={styles.post_img_2}>
-                  <Link href="/">
-                    <Image src={ANSU} alt="" width={580} height={508} />
+                  <Link href={`/news/${aarthikfirst.id}`}>
+                    <Image src={`https://www.bimaabazar.com/${aarthikfirst.image1}`} alt="aarthik" width={580} height={508} />
                   </Link>
                 </div>
                 <div className={styles.post_title_2}>
-                  <Link href="/">
+                  <Link href={`/news/${aarthikfirst.id}`}>
                     <h4>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
+                      {aarthikfirst.title}
                     </h4>
                   </Link>
                   <p>
-                    १५ असार, काठमाडौं । सर्वोच्च अदालतले ललिता निवास जग्गा
-                    अनियमितता प्रकरणमा मुछिएका तीन जनालाई पक्राउ गर्नुको कारण
-                    पेश गर्न सरकारका नाममा आदेश जारी गरेको छ । न्यायाधीश डा.
-                    कुमार...
+                  {truncateContent(aarthikfirst.content, 40)}
                   </p>
                 </div>
               </div>
@@ -84,136 +95,20 @@ const Aarthik = () => {
               className={styles.home_samachar}
               data-device-type="desktop"
             ></div>
-            <div className={styles.span_6}>
+            {aarthiksecond.map((secondnews)=>(
+            <div className={styles.span_6} key={secondnews.id}>
               <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
+                <Link className={styles.post_con} href={`/news/${secondnews.id}`}>
+                  <Image src={`https://www.bimaabazar.com/${secondnews.image1}`} alt="aarthik" width={134} height={82} />
                   <div className={styles.content_wrap}>
                     <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
+                      {secondnews.title}
                     </h2>
                   </div>
                 </Link>
               </div>
             </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
           <div className={styles.prachar}>
             <div className={styles.each_ad}>
@@ -221,84 +116,20 @@ const Aarthik = () => {
             </div>
           </div>
           <div className={styles.grid_12}>
-            <div className={styles.span_6}>
+          {aarthiklast.map((lastnews)=>(
+            <div className={styles.span_6} key={lastnews}>
               <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
+                <Link className={styles.post_con} href={`/news/${lastnews.id}`}>
+                  <Image src={`https://www.bimaabazar.com/${lastnews.image1}`} alt="aarthik" width={134} height={82} />
                   <div className={styles.content_wrap}>
                     <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
+                     {lastnews.title}
                     </h2>
                   </div>
                 </Link>
               </div>
             </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_6}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href="/">
-                  <Image src={ANSU} alt="" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
-                    </h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
         <div className={styles.bijnesh_right}>
@@ -352,7 +183,7 @@ const Aarthik = () => {
                 </i>
               </Link>
             </div>
-            <div className={styles.bijnesh_right_2}>
+            {/* <div className={styles.bijnesh_right_2}>
               <div className={styles.side_ad}>
                 <div
                   className={styles.desktop_mukhya_ad}
@@ -391,7 +222,7 @@ const Aarthik = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
