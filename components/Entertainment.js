@@ -8,7 +8,31 @@ import prachar from "../public/prachar.gif";
 import { MdArrowForwardIos } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
 
-const Entertainment = () => {
+function getMinutesAgo(created_at) {
+  const createdDate = new Date(created_at);
+  const currentDate = new Date();
+  const timeDifference = currentDate.getTime() - createdDate.getTime();
+  const minutesAgo = Math.floor(timeDifference / (1000 * 60));
+  return minutesAgo;
+}
+
+function formatTime(minutes) {
+  if (minutes < 60) {
+    return `${minutes} minutes ago`;
+  } else {
+    const hours = Math.floor(minutes / 60);
+    return `${hours} hours ago`;
+  }
+}
+
+
+const Entertainment = ({entertainmentNews}) => {
+  const entertainfirst = entertainmentNews[0]
+  const entertainsecond = entertainmentNews.slice(1,2)
+  const entertainthird = entertainmentNews.slice(3,5)
+
+
+
   return (
     <section className={styles.Entertainment_section}>
       <div className={styles.E_container}>
@@ -39,112 +63,86 @@ const Entertainment = () => {
         <div className={styles.Enter_grid_12}>
           <div className={styles.merge_2}>
             <div className={styles.Enter_spot_news}>
-              <Link href="/">
+              <Link href={`/news/${entertainfirst.id}`}>
                 <Image
                   className={styles.M_image}
-                  src={ANSU}
-                  alt=""
+                  src={`https://www.bimaabazar.com/${entertainfirst.image1}`}
+                  alt="manoranjan"
                   width={700}
                   height={600}
                 />
                 <div className={styles.post_content}>
                   <h2 className={styles.M_title_text}>
-                    साफ च्याम्पियनसिप २०२३ : अपेक्षा अनुसारकै नतिजा साफ
-                    च्याम्पियनसिप २०२३
+                    {entertainfirst.title}
                   </h2>
                   <div className={styles.title_in}>
                     <div className={styles.M_post_hour}>
                       <i>
                         <FaRegClock />
                       </i>
-                      <span>५ मिनेट अगाडि</span>
+                      <span>{formatTime(getMinutesAgo(entertainfirst.created_at))}</span>
                     </div>
                   </div>
                 </div>
               </Link>
             </div>
           </div>
-          <div className={styles.merge_2}>
+          {entertainsecond.map((entersecond)=>(
+          <div className={styles.merge_2} key={entersecond.id}>
             <div className={styles.Enter_spot_news}>
-              <Link href="/">
+              <Link href={`/news/${entersecond.id}`}>
                 <Image
                   className={styles.M_image}
-                  src={ANSU}
-                  alt=""
+                  src={`https://www.bimaabazar.com/${entersecond.image1}`}
+                  alt="manoranjan"
                   width={700}
                   height={600}
                 />
                 <div className={styles.post_content}>
                   <h2 className={styles.M_title_text}>
-                    साफ च्याम्पियनसिप २०२३ : अपेक्षा अनुसारकै नतिजा साफ
-                    च्याम्पियनसिप २०२३
+                    {entersecond.title}
                   </h2>
                   <div className={styles.title_in}>
                     <div className={styles.M_post_hour}>
                       <i>
                         <FaRegClock />
                       </i>
-                      <span>५ मिनेट अगाडि</span>
+                      <span>{formatTime(getMinutesAgo(entersecond.created_at))}</span>
                     </div>
                   </div>
                 </div>
               </Link>
             </div>
           </div>
-          <div className={styles.span_4}>
+          ))}
+          {entertainthird.map((enterthird)=>(
+          <div className={styles.span_4} key={enterthird.id}>
             <div className={styles.Enter_spot_news}>
-              <Link href="/">
+              <Link href={`/news/${enterthird.id}`}>
                 <Image
                   className={styles.M_image}
-                  src={ANSU}
-                  alt=""
+                  src={`https://www.bimaabazar.com/${enterthird.image1}`}
+                  alt="manoranjan"
                   width={500}
                   height={400}
                 />
                 <div className={styles.post_content}>
                   <h2 className={styles.E_title_text}>
-                    साफ च्याम्पियनसिप २०२३ : अपेक्षा अनुसारकै नतिजा साफ
-                    च्याम्पियनसिप २०२३
+                    {enterthird.title}
                   </h2>
                   <div className={styles.title_in}>
                     <div className={styles.M_post_hour}>
                       <i>
                         <FaRegClock />
                       </i>
-                      <span>५ मिनेट अगाडि</span>
+                      <span>{formatTime(getMinutesAgo(enterthird.created_at))}</span>
                     </div>
                   </div>
                 </div>
               </Link>
             </div>
           </div>
-          <div className={styles.span_4}>
-            <div className={styles.Enter_spot_news}>
-              <Link href="/">
-                <Image
-                  className={styles.M_image}
-                  src={ANSU}
-                  alt=""
-                  width={500}
-                  height={400}
-                />
-                <div className={styles.post_content}>
-                  <h2 className={styles.E_title_text}>
-                    साफ च्याम्पियनसिप २०२३ : अपेक्षा अनुसारकै नतिजा साफ
-                    च्याम्पियनसिप २०२३
-                  </h2>
-                  <div className={styles.title_in}>
-                    <div className={styles.M_post_hour}>
-                      <i>
-                        <FaRegClock />
-                      </i>
-                      <span>५ मिनेट अगाडि</span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
