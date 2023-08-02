@@ -27,8 +27,7 @@ function formatTime(minutes) {
 
 
 const Entertainment = ({entertainmentNews}) => {
-  const entertainfirst = entertainmentNews[0]
-  const entertainsecond = entertainmentNews.slice(1,2)
+  const entertainsecond = entertainmentNews.slice(0,2)
   const entertainthird = entertainmentNews.slice(3,5)
 
 
@@ -61,32 +60,6 @@ const Entertainment = ({entertainmentNews}) => {
               <Link href="/">ब्लोअप</Link>
             </ul>
         <div className={styles.Enter_grid_12}>
-          <div className={styles.merge_2}>
-            <div className={styles.Enter_spot_news}>
-              <Link href={`/news/${entertainfirst.id}`}>
-                <Image
-                  className={styles.M_image}
-                  src={`https://www.bimaabazar.com/${entertainfirst.image1}`}
-                  alt="manoranjan"
-                  width={700}
-                  height={600}
-                />
-                <div className={styles.post_content}>
-                  <h2 className={styles.M_title_text}>
-                    {entertainfirst.title}
-                  </h2>
-                  <div className={styles.title_in}>
-                    <div className={styles.M_post_hour}>
-                      <i>
-                        <FaRegClock />
-                      </i>
-                      <span>{formatTime(getMinutesAgo(entertainfirst.created_at))}</span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
           {entertainsecond.map((entersecond)=>(
           <div className={styles.merge_2} key={entersecond.id}>
             <div className={styles.Enter_spot_news}>

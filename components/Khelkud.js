@@ -8,7 +8,27 @@ import prachar from "../public/prachar.gif";
 import { MdArrowForwardIos } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
 
-const Khelkud = () => {
+function getMinutesAgo(created_at) {
+  const createdDate = new Date(created_at);
+  const currentDate = new Date();
+  const timeDifference = currentDate.getTime() - createdDate.getTime();
+  const minutesAgo = Math.floor(timeDifference / (1000 * 60));
+  return minutesAgo;
+}
+
+function formatTime(minutes) {
+  if (minutes < 60) {
+    return `${minutes} minutes ago`;
+  } else {
+    const hours = Math.floor(minutes / 60);
+    return `${hours} hours ago`;
+  }
+}
+
+const Khelkud = ({khelkudNews}) => {
+  const khelfirst = khelkudNews.slice(0,2)
+  const khelsecond = khelkudNews.slice(3,5)
+
   return (
     <section className={styles.Sports_section}>
       <div className={styles.E_container}>
@@ -22,7 +42,7 @@ const Khelkud = () => {
               <Link href="/">मनोरञ्जन भिडियो</Link>
               <Link href="/">ब्लोअप</Link>
             </ul>
-            <Link href="/">
+            <Link href="/khelkud">
               <i className={styles.F_arrow}>
                 <MdArrowForwardIos />
               </i>
@@ -37,114 +57,62 @@ const Khelkud = () => {
               <Link href="/">ब्लोअप</Link>
             </ul>
         <div className={styles.Enter_grid_12}>
-          <div className={styles.merge_2}>
+          {khelfirst.map((khelnews)=>(
+          <div className={styles.merge_2} key={khelnews.id}>
             <div className={styles.Enter_spot_news}>
-              <Link href="/">
+              <Link href={`/news/${khelnews.id}`}>
                 <Image
                   className={styles.M_image}
-                  src={ANSU}
-                  alt=""
+                  src={`https://www.bimaabazar.com/${khelnews.image1}`}
+                  alt="khelkud"
                   width={700}
                   height={600}
                 />
                 <div className={styles.post_content}>
                   <h2 className={styles.M_title_text}>
-                    साफ च्याम्पियनसिप २०२३ : अपेक्षा अनुसारकै नतिजा साफ
-                    च्याम्पियनसिप २०२३
+                   {khelnews.title}
                   </h2>
                   <div className={styles.title_in}>
                     <div className={styles.M_post_hour}>
                       <i>
                         <FaRegClock />
                       </i>
-                      <span>५ मिनेट अगाडि</span>
+                      <span>{formatTime(getMinutesAgo(khelnews.created_at))}</span>
                     </div>
                   </div>
                 </div>
               </Link>
             </div>
           </div>
-          <div className={styles.merge_2}>
+          ))}
+          {khelsecond.map((knews)=>(
+          <div className={styles.span_4}key={knews.id} >
             <div className={styles.Enter_spot_news}>
-              <Link href="/">
+              <Link href={`/news/${knews.id}`}>
                 <Image
                   className={styles.M_image}
-                  src={ANSU}
-                  alt=""
-                  width={700}
-                  height={600}
-                />
-                <div className={styles.post_content}>
-                  <h2 className={styles.M_title_text}>
-                    साफ च्याम्पियनसिप २०२३ : अपेक्षा अनुसारकै नतिजा साफ
-                    च्याम्पियनसिप २०२३
-                  </h2>
-                  <div className={styles.title_in}>
-                    <div className={styles.M_post_hour}>
-                      <i>
-                        <FaRegClock />
-                      </i>
-                      <span>५ मिनेट अगाडि</span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
-          <div className={styles.span_4}>
-            <div className={styles.Enter_spot_news}>
-              <Link href="/">
-                <Image
-                  className={styles.M_image}
-                  src={ANSU}
-                  alt=""
+                  src={`https://www.bimaabazar.com/${knews.image1}`}
+                  alt="khelkud"
                   width={500}
                   height={400}
                 />
                 <div className={styles.post_content}>
                   <h2 className={styles.E_title_text}>
-                    साफ च्याम्पियनसिप २०२३ : अपेक्षा अनुसारकै नतिजा साफ
-                    च्याम्पियनसिप २०२३
+                    {knews.title}
                   </h2>
                   <div className={styles.title_in}>
                     <div className={styles.M_post_hour}>
                       <i>
                         <FaRegClock />
                       </i>
-                      <span>५ मिनेट अगाडि</span>
+                      <span>{formatTime(getMinutesAgo(knews.created_at))}</span>
                     </div>
                   </div>
                 </div>
               </Link>
             </div>
           </div>
-          <div className={styles.span_4}>
-            <div className={styles.Enter_spot_news}>
-              <Link href="/">
-                <Image
-                  className={styles.M_image}
-                  src={ANSU}
-                  alt=""
-                  width={500}
-                  height={400}
-                />
-                <div className={styles.post_content}>
-                  <h2 className={styles.E_title_text}>
-                    साफ च्याम्पियनसिप २०२३ : अपेक्षा अनुसारकै नतिजा साफ
-                    च्याम्पियनसिप २०२३
-                  </h2>
-                  <div className={styles.title_in}>
-                    <div className={styles.M_post_hour}>
-                      <i>
-                        <FaRegClock />
-                      </i>
-                      <span>५ मिनेट अगाडि</span>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

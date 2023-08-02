@@ -302,6 +302,9 @@ white-space: nowrap;
   padding: 5px 15px;
   margin-left: auto;
 }
+.top_search>span{
+  cursor: pointer;
+}
 .search_fields{
   width: 100%;
   border: none;

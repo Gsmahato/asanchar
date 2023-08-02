@@ -7,9 +7,12 @@ import Aarthik from "../../components/Aarthik";
 import Rajniti from "../../components/Rajniti";
 import BigyanPrabhidhi from "../../components/BigyanPrabhidhi";
 import Khelkud from "../../components/Khelkud";
+import Health from "../../components/Health";
+import International from "../../components/International";
+import Interview from "../../components/Interview";
 
 
-export default function Home({ newsData, mukhyaNews ,samacharNews,aarthikNews,rajnitiNews,bigyanprabidhiNews,entertainmentNews,khelkudNews}) {
+export default function Home({ newsData, mukhyaNews ,samacharNews,aarthikNews,rajnitiNews,bigyanprabidhiNews,entertainmentNews,khelkudNews,healthNews,internationalNews,interviewNews,thoughtNews}) {
   const latestNews = newsData.filter((news) => news.latest);
   const trendingNews =newsData.filter((news) => news.trending);
 
@@ -31,6 +34,9 @@ export default function Home({ newsData, mukhyaNews ,samacharNews,aarthikNews,ra
       <Entertainment entertainmentNews={entertainmentNews}/>
       <BigyanPrabhidhi bigyanprabidhiNews={bigyanprabidhiNews}/>
       <Khelkud khelkudNews={khelkudNews}/>
+      <Health healthNews={healthNews}/>
+      <International internationalNews={internationalNews}/>
+      <Interview interviewNews={interviewNews} thoughtNews={thoughtNews}/>
     </>
   );
 }
@@ -73,6 +79,23 @@ export async function getStaticProps() {
   khelkudNews = khelkudNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
+  let healthNews = newsData.filter((news) => news.category === 13);
+  healthNews = healthNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+  let internationalNews = newsData.filter((news) => news.category === 15);
+  internationalNews = internationalNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+  let interviewNews = newsData.filter((news) => news.category === 16);
+  interviewNews = interviewNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+  let thoughtNews = newsData.filter((news) => news.category === 16);
+  thoughtNews = thoughtNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
 
 
   return {
@@ -85,6 +108,10 @@ export async function getStaticProps() {
       entertainmentNews,
       bigyanprabidhiNews,
       khelkudNews,
+      healthNews,
+      internationalNews,
+      interviewNews,
+      thoughtNews,
     },
   };
 }

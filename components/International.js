@@ -8,17 +8,17 @@ import prachar from "../public/prachar.gif";
 import rightbanner1 from "../public/rightbanner1.gif";
 import { MdArrowForwardIos, MdArrowForward } from "react-icons/md";
 
-const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
-  const bigyanfirst = bigyanprabidhiNews[0];
-  const bigyanremaining = bigyanprabidhiNews.slice(1, 10);
+const International = ({ internationalNews }) => {
+  const internationalfirst = internationalNews[0];
+  const internationalremaining = internationalNews.slice(1, 10);
   return (
     <section className={styles.bijnesh_samachar}>
       <div className={styles.news_container}>
         <div className={styles.col_left}>
           <div className={styles.section_title}>
             <h2 className={styles.title_part}>
-              विज्ञान प्रविधि
-              <Link href="/bigyanprabidhi">
+              अन्तराष्ट्रिय
+              <Link href="/antarastriya">
                 <i className={styles.F_arrow}>
                   <MdArrowForwardIos />
                 </i>
@@ -29,9 +29,9 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
             <div className={styles.span_12}>
               <div className={styles.samachar_spot_news}>
                 <div className={styles.post_img}>
-                  <Link href={`/news/${bigyanfirst.id}`}>
+                  <Link href={`/news/${internationalfirst.id}`}>
                     <Image
-                      src={`https://www.bimaabazar.com/${bigyanfirst.image1}`}
+                      src={`https://www.bimaabazar.com/${internationalfirst.image1}`}
                       alt=""
                       width={580}
                       height={508}
@@ -39,8 +39,8 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
                   </Link>
                 </div>
                 <div className={styles.post_title_3}>
-                  <Link href={`/news/${bigyanfirst.id}`}>
-                    <h4>{bigyanfirst.title}</h4>
+                  <Link href={`/news/${internationalfirst.id}`}>
+                    <h4>{internationalfirst.title}</h4>
                   </Link>
                 </div>
               </div>
@@ -49,7 +49,7 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
               className={styles.home_samachar}
               data-device-type="desktop"
             ></div>
-            {bigyanremaining.map((bigyansecond) => (
+            {internationalremaining.map((bigyansecond) => (
               <div className={styles.span_4}>
                 <div className={styles.pradesh_post_news} key={bigyansecond}>
                   <Link
@@ -71,15 +71,15 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
             ))}
           </div>
         </div>
-        <div className={styles.col_right}>
+        {/* <div className={styles.col_right}>
           <div className={styles.trending_vertical}>
-            <h2>प्रविधि</h2>
+            <h2>प्रवास</h2>
             <ul className={styles.t_news}>
               <li>
                 <div className={styles.p_news}>
                   <Link href="/">
                     <span className={styles.trending_counter1}>
-                      <MdArrowForward />
+                      <MdArrowForward/>
                     </span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
@@ -95,7 +95,7 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
                 <div className={styles.p_news}>
                   <Link href="/">
                     <span className={styles.trending_counter1}>
-                      <MdArrowForward />
+                      <MdArrowForward/>
                     </span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
@@ -111,7 +111,7 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
                 <div className={styles.p_news}>
                   <Link href="/">
                     <span className={styles.trending_counter1}>
-                      <MdArrowForward />
+                      <MdArrowForward/>
                     </span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
@@ -127,7 +127,7 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
                 <div className={styles.p_news}>
                   <Link href="/">
                     <span className={styles.trending_counter1}>
-                      <MdArrowForward />
+                      <MdArrowForward/>
                     </span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
@@ -143,7 +143,7 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
                 <div className={styles.p_news}>
                   <Link href="/">
                     <span className={styles.trending_counter1}>
-                      <MdArrowForward />
+                      <MdArrowForward/>
                     </span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
@@ -156,8 +156,8 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
                 </div>
               </li>
             </ul>
-          </div>
-          {/* <div className={styles.bijnesh_right_2}>
+          </div> */}
+        {/* <div className={styles.bijnesh_right_2}>
             <div className={styles.side_ad}>
               <div
                 className={styles.desktop_mukhya_ad}
@@ -177,10 +177,10 @@ const BigyanPrabhidhi = ({ bigyanprabidhiNews }) => {
               </div>
             </div>
           </div> */}
-        </div>
+        {/* </div> */}
       </div>
     </section>
   );
 };
 
-export default BigyanPrabhidhi;
+export default International;

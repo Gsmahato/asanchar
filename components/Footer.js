@@ -45,7 +45,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4>विजनेस</h4>
+              <h4>आर्थिक</h4>
               <ul>
                 {/* <li>
                   <Link href="/">समाज</Link>
@@ -105,7 +105,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h4>ताजाखबर</h4>
+              <h4>अबिरल संचार</h4>
               <ul>
                 {/* <li>
                   <Link href="/">समाज</Link>
