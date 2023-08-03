@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../../styles/newStyles.module.css";
+import styles from "../../styles/Admin.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import Image from "next/image";import DashboardLayout from '../../../components/components/DashboardLayout'
 
