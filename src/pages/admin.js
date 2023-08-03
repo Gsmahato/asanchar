@@ -30,7 +30,7 @@ const admin = () => {
         toast.success("Login successful", {
           position: toast.POSITION.TOP_CENTER,
         });
-        router.push("/dashboard");
+        router.push("/dashboard/dashHome");
       } else if (response.status === 403) {
         console.log("Unauthorized");
         toast.error("Forbidden: Access Denied", {

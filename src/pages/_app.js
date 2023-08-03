@@ -44,7 +44,7 @@ export default function App({ Component, pageProps}) {
       <div className={styles.home_container}>
         {!isAdminPage && !isDashboardPage && <Topheader />}
         {!isAdminPage && !isDashboardPage && <Navbar />}
-        {!isAdminPage && !isDashboardPage && <Hottopic newsData={newsData} />} {/* Pass newsData as a prop */}
+        {!isAdminPage && !isDashboardPage && <Hottopic newsData={newsData} />}
         <Component {...pageProps} />
         {!isAdminPage && !isDashboardPage && <Footer />}
       </div>

@@ -209,9 +209,9 @@
     text-shadow: 0 1px 0 #fff;
     opacity: .5;
     padding: 0;
-      background-color: transparent;
-      border: 0;
-      appearance: none;
+    background-color: transparent;
+    border: 0;
+    appearance: none;
   
   }
   .app_main{
@@ -223,14 +223,13 @@
     margin-top: 2rem;
   }
   .sidebar{
-    /* top: 0; */
     /* position: fixed; */
     box-shadow: 0.4375rem 0 3.75rem rgba(0,0,0,.05);
     z-index: 9999;
     transition: all .2s;
-    display: flex;
     align-items: center;   
     width: 20rem; 
+    height: 100vh;
   }
   .sidebar_scroll{
     z-index: 15;
@@ -283,10 +282,10 @@
   }
   .multimenu_container>li>a{
     text-decoration: none;
-    color: rgb(212, 18, 18);
+    color: rgb(225, 216, 216);
   }
   .multimenu_container>li>a:hover{
-    color: rgb(231, 16, 188);
+    color: #db0000
   }
   .multimenu_item{
     transition: max-height 0.3s ease;
@@ -576,4 +575,7 @@
     width: 100%;
     height: 3rem;
     background-color: #417690;
+ }
+ .dashcontenthome{
+  color: #fff;
  }

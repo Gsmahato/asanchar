@@ -1,12 +1,12 @@
 import React from 'react'
 import DashboardLayout from '../../../components/components/DashboardLayout'
 
-const setting = () => {
+const dashCategory = () => {
   return (
     <DashboardLayout>
-    <div>setting</div>
+    <div>dashCategory</div>
     </DashboardLayout>
   )
 }
 
-export default setting
+export default dashCategory

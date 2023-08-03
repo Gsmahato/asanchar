@@ -1,11 +1,21 @@
-
 import React from "react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import ANSU from "../../public/ANSU.jpg";
-const samachar = () => {
 
+function truncateContent(content, maxWords) {
+  if (typeof content !== "string") {
+    return "";
+  }
+
+  const words = content.trim().split(" ");
+  const truncated = words.slice(0, maxWords).join(" ");
+  return truncated + (words.length > maxWords ? "..." : "");
+}
+const samachar = ({samacharNews}) => {
+  const samacharNewsfirst=samacharNews[0];
+  const samacharNewsremaining = samacharNews.slice(1);
   return (
     <section className={styles.bijnesh_samachar}>
       <div className={styles.news_container}>
@@ -13,24 +23,21 @@ const samachar = () => {
           <div className={styles.section_title}>
             <h2 className={styles.title_part}>समाचार</h2>
           </div>
-          <div className={styles.span_12_bijnesh}>
+          <div className={styles.span_12_bijnesh} key={samacharNewsfirst.id}>
             <div className={styles.samachar_spot_news_bijnesh}>
               <div className={styles.post_img_2_bijnesh}>
-                <Link href="/">
-                  <Image src={ANSU} alt="" width={580} height={508} />
+                <Link href={`/news/${samacharNewsfirst.id}`}>
+                  <Image src={`https://www.bimaabazar.com/${samacharNewsfirst.image1}`}  alt="" width={580} height={508} />
                 </Link>
               </div>
               <div className={styles.post_title_samachar}>
-                <Link href="/">
+                <Link href={`/news/${samacharNewsfirst.id}`}>
                   <h4>
-                    ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                    पेश गर्न सर्वोच्चको आदेश
+                    {samacharNewsfirst.title}
                   </h4>
                 </Link>
                 <p>
-                  १५ असार, काठमाडौं । सर्वोच्च अदालतले ललिता निवास जग्गा
-                  अनियमितता प्रकरणमा मुछिएका तीन जनालाई पक्राउ गर्नुको कारण पेश
-                  गर्न सरकारका नाममा आदेश जारी गरेको छ । न्यायाधीश डा. कुमार...
+                {truncateContent(samacharNewsfirst.content, 40)}
                 </p>
               </div>
             </div>
@@ -40,19 +47,20 @@ const samachar = () => {
             data-device-type="desktop"
           ></div>
           <div className={styles.grid_12}>
-            <div className={styles.span_4_bijnesh}>
+            {samacharNewsremaining.map((samaremain)=>(
+            <div className={styles.span_4_bijnesh} key={samaremain.id}>
               <div className={styles.post_1tr_binesh}>
-                <Link className={styles.post_con_bijnesh} href="/">
-                  <Image src={ANSU} alt="" width={386} height={254} />
+                <Link className={styles.post_con_bijnesh} href={`/news/${samaremain.id}`}>
+                  <Image src={`https://www.bimaabazar.com/${samaremain.image1}`} alt="" width={386} height={254} />
                   <div className={styles.content_wrap_bijnesh}>
                     <h2 className={styles.title_text_bijnesh}>
-                      ललिता निवास प्रकरणमा तीन जनालाई पक्राउ गर्नुको आधार र कारण
-                      पेश गर्न सर्वोच्चको आदेश
+                      {samaremain.title}
                     </h2>
                   </div>
                 </Link>
               </div>
             </div>
+            ))}
             <div className={styles.span_4_bijnesh}>
               <div className={styles.post_1tr_binesh}>
                 <Link className={styles.post_con_bijnesh} href="/">
@@ -316,9 +324,9 @@ const samachar = () => {
           </div>
           <div className={styles.pagination_content}>
             <div className={styles.page_navigation}>
-                <div className={styles.navigation_links}>
-                    <Link href="/">1</Link>
-                </div>
+              <div className={styles.navigation_links}>
+                <Link href="/">1</Link>
+              </div>
             </div>
           </div>
         </div>
@@ -327,4 +335,19 @@ const samachar = () => {
   );
 };
 
-export default samachar
+export default samachar;
+
+export async function getStaticProps() {
+  const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
+  let newsData = await res.json();
+  let samacharNews = newsData.filter((news) => news.category === 8);
+  samacharNews = samacharNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
+  return {
+    props: {
+      samacharNews,
+    },
+  };
+}

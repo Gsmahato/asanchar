@@ -31,8 +31,8 @@ const Interview = ({ interviewNews,thoughtNews }) => {
               data-device-type="desktop"
             ></div>
             {interviewall.map((bigyansecond) => (
-              <div className={styles.span_4}>
-                <div className={styles.pradesh_post_news} key={bigyansecond}>
+              <div className={styles.span_4} key={bigyansecond}>
+                <div className={styles.pradesh_post_news} >
                   <Link
                     className={styles.pradesh_post_news}
                     href={`/news/${bigyansecond.id}`}
