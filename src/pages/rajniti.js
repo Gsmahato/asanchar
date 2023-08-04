@@ -7,7 +7,11 @@ import digital from "../../public/digital.jpg";
 import prachar from "../../public/prachar.gif";
 import rightbanner1 from "../../public/rightbanner1.gif";
 import { MdArrowForwardIos } from "react-icons/md";
-const rajniti = () => {
+const rajniti = ({rajnitiNews,newsData}) => {
+  const rajnitiNewsfirst=rajnitiNews[0];
+  const rajnitiNewsremaining = rajnitiNews.slice(1);
+  const trendingNews =newsData.filter((news) => news.trending);
+  const trendtopnews = trendingNews.slice(0,9);
   return (
     <section className={styles.bijnesh_samachar}>
       <div className={styles.news_container}>
@@ -18,17 +22,17 @@ const rajniti = () => {
             </h2>
           </div>
           <div className={styles.grid_12}>
-            <div className={styles.span_12}>
+            <div className={styles.span_12} key={rajnitiNewsfirst.id}>
               <div className={styles.samachar_spot_news}>
                 <div className={styles.post_img}>
-                  <Link href="/">
-                    <Image src={ANSU} alt="rajniti" width={580} height={508} />
+                  <Link href={`/news/${rajnitiNewsfirst.id}`}>
+                    <Image src={`https://www.bimaabazar.com/${rajnitiNewsfirst.image1}`}  alt="rajniti" width={580} height={508} />
                   </Link>
                 </div>
                 <div className={styles.post_title_3}>
-                  <Link href="/">
+                  <Link href={`/news/${rajnitiNewsfirst.id}`}>
                     <h4>
-                      title
+                     {rajnitiNewsfirst.title}
                     </h4>
                   </Link>
                 </div>
@@ -38,148 +42,19 @@ const rajniti = () => {
               className={styles.home_samachar}
               data-device-type="desktop"
             ></div>
-            {/* {rajnitisecond.map((ranews)=>( */}
-            <div className={styles.span_4}>
+            {rajnitiNewsremaining.map((ranews)=>(
+            <div className={styles.span_4} key={ranews.id}>
               <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
+                <Link className={styles.pradesh_post_news} href={`/news/${ranews.id}`}>
+                  <Image src={`https://www.bimaabazar.com/${ranews.image1}`} alt="rajniti" width={276} height={165} />
                   <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
+                    <h2>{ranews.title}</h2>
                   </div>
                 </Link>
               </div>
             </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <div className={styles.span_4}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href="/">
-                  <Image src={ANSU} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>title</h2>
-                  </div>
-                </Link>
-              </div>
-            </div>
-            {/* ))} */}
+            ))}
+            
            
           </div>
         </div>
@@ -187,202 +62,21 @@ const rajniti = () => {
           <div className={styles.trending_vertical}>
             <h2>ट्रेन्डिङ</h2>
             <ul className={styles.t_news}>
-              <li>
+              {trendtopnews.map((trendNews)=>(
+              <li key={trendNews.id}>
                 <div className={styles.p_news}>
-                  <Link href="/">
+                  <Link href={`/news/${trendNews.id}`}>
                     <span className={styles.trending_counter}></span>
                     <div className={styles.pradesh_content_wrap}>
                       <h2 className={styles.pradesh_title_text}>
-                        title
+                        {trendNews.title}
                       </h2>
                     </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
+                    <Image src={`https://www.bimaabazar.com/${trendNews.image1}`} width={90} height={68} alt="trending" />
                   </Link>
                 </div>
               </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>३</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>४</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="{`/news/${trendfour.id}`}">
-                    <span className={styles.trending_counter}>५</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-              <li>
-                <div className={styles.p_news}>
-                  <Link href="/">
-                    <span className={styles.trending_counter}>२</span>
-                    <div className={styles.pradesh_content_wrap}>
-                      <h2 className={styles.pradesh_title_text}>
-                        title
-                      </h2>
-                    </div>
-                    <Image src={ANSU} width={90} height={68} alt="trending" />
-                  </Link>
-                </div>
-              </li>
-
-              
+              ))}
             </ul>
           </div>
           {/* <div className={styles.bijnesh_right_2}>
@@ -412,3 +106,18 @@ const rajniti = () => {
 }
 
 export default rajniti
+export async function getStaticProps() {
+  const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
+  let newsData = await res.json();
+  let rajnitiNews = newsData.filter((news) => news.category === 9);
+  rajnitiNews = rajnitiNews.sort(
+    (a, b) => new Date(b.created_at) - new Date(a.created_at)
+  );
+
+  return {
+    props: {
+      newsData,
+      rajnitiNews,
+    },
+  };
+}

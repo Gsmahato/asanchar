@@ -70,7 +70,7 @@ const bigyanprabidhi = ({bigyanprabidhisamachar}) => {
           <div className={styles.trending_vertical}>
             <h2>प्रविधि</h2>
             <ul className={styles.t_news}>
-              <li>
+              {/* <li>
                 <div className={styles.p_news}>
                   <Link href="/">
                     <span className={styles.trending_counter1}>
@@ -149,7 +149,7 @@ const bigyanprabidhi = ({bigyanprabidhisamachar}) => {
                     <Image src={ANSU} width={90} height={68} alt="" />
                   </Link>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
           {/* <div className={styles.bijnesh_right_2}>

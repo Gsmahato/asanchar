@@ -79,7 +79,7 @@ export async function getStaticProps() {
   khelkudNews = khelkudNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-  let healthNews = newsData.filter((news) => news.category === 13);
+  let healthNews = newsData.filter((news) => news.category === 12);
   healthNews = healthNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
