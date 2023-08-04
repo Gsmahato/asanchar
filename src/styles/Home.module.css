@@ -2075,6 +2075,10 @@ white-space: nowrap;
 .post_title_left1{
   display: none;
 }
+.entry_title_wrapper{
+  top: 96px; 
+
+}
 
 }
 @media (max-width: 767px){
@@ -2801,6 +2805,8 @@ height: 1.5rem;
 }
 .entry_title_wrapper{
   padding: 0;
+  top: 86px; 
+
 }
 .comm_icon1>svg{
   width: 1.5rem;
