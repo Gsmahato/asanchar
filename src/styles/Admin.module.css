@@ -296,12 +296,13 @@
   .multimenu_item>ul{
     transition: 0.3s ease;
   }
-  .multimenu_item>a{
+  .subdrop{
     display: flex;
     padding: 0.5rem 0 0.5rem 0;
     border-bottom: 1px solid rgba(206, 204, 204, 0.538);
     font-size: 1rem;
     font-weight: 700;
+    cursor: pointer;
   
   }
   .multimenu_item>a>i>svg{
@@ -586,3 +587,25 @@
   margin-left: 5rem;
   margin-top: 5rem;
  }
+ .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination span {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  margin-right: 0.5rem;
+}
+
+.pagination span:hover {
+  background-color: #e0e0e0;
+}
+
+.pagination span.active {
+  background-color: #007bff;
+  color: #fff;
+}

@@ -44,7 +44,7 @@ const DashSidebar = () => {
                     isUserVisible ? styles.active : ""
                   }`}
                 >
-                  <Link href="/dashboard/dashHome" onClick={toggleUser}>
+                  <div className={styles.subdrop} onClick={toggleUser}>
                     <i>
                       <FaUserAlt />
                     </i>
@@ -52,7 +52,7 @@ const DashSidebar = () => {
                     <div className={styles.right_icon}>
                       {isUserVisible ? <BiDownArrow /> : <BiRightArrow />}
                     </div>
-                  </Link>
+                  </div>
                   {isUserVisible && (
                     <ul>
                       <li className={styles.list_item}>
@@ -102,8 +102,7 @@ const DashSidebar = () => {
                     isCategoryVisible ? styles.active : ""
                   }`}
                 >
-                  <Link
-                    href="/dashboard/dashCategory"
+                  <div className={styles.subdrop}
                     onClick={toggleCategory}
                   >
                     <i>
@@ -115,7 +114,7 @@ const DashSidebar = () => {
                     <div className={styles.right_icon}>
                       {isCategoryVisible ? <BiDownArrow /> : <BiRightArrow />}
                     </div>
-                  </Link>
+                  </div>
                   {isCategoryVisible && (
                     <ul>
                       <li className={styles.list_item}>
@@ -152,7 +151,7 @@ const DashSidebar = () => {
                     isNewsVisible ? styles.active : ""
                   }`}
                 >
-                  <Link href="/dashboard/dashHome" onClick={toggleNews}>
+                  <div className={styles.subdrop} onClick={toggleNews}>
                     <i>
                       <RiNewspaperLine />
                     </i>
@@ -160,7 +159,7 @@ const DashSidebar = () => {
                     <div className={styles.right_icon}>
                       {isNewsVisible ? <BiDownArrow /> : <BiRightArrow />}
                     </div>
-                  </Link>
+                  </div>
                   {isNewsVisible && (
                     <ul>
                       <li className={styles.list_item}>

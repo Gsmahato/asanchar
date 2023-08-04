@@ -12,6 +12,7 @@ import {
   FaRegClock,
 } from "react-icons/fa";
 import { MdArrowForwardIos } from "react-icons/md";
+import NepaliDate from "nepali-date-converter";
 
 function Newspage({ news }) {
   const [isScrollingDown, setIsScrollingDown] = useState(false);
@@ -26,7 +27,7 @@ function Newspage({ news }) {
       } else if (scrollY <= scrollThreshold && isScrollingDown) {
         setIsScrollingDown(false);
       }
-  
+
       const newSize = isScrollingDown ? "26px" : "65px";
       setTitleFontSize(newSize);
     }
@@ -38,6 +39,46 @@ function Newspage({ news }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isScrollingDown]);
+
+  const createdDate = new Date(news.created_at);
+
+  const nepaliDate = new NepaliDate(createdDate);
+
+  const nepaliMonths = [
+    "बैशाख",
+    "जेठ",
+    "असार",
+    "साउन",
+    "भदौ",
+    "असोज",
+    "कार्तिक",
+    "मङ्सिर",
+    "पुष",
+    "माघ",
+    "फाल्गुन",
+    "चैत्र",
+  ];
+
+  const dayOfWeek = nepaliDate.format("ddd");
+
+  const day = nepaliDate.format("DD");
+
+  const month = nepaliMonths[nepaliDate.format("MM") - 1];
+
+  const year = nepaliDate.format("YYYY");
+
+  const hours = createdDate.getHours();
+  const minutes = createdDate.getMinutes();
+
+  const formattedHours = (hours % 12 === 0 ? 12 : hours % 12)
+    .toString()
+    .padStart(2, "0");
+  const formattedMinutes = minutes.toString().padStart(2, "0");
+
+  const ampm = hours >= 12 ? "PM" : "AM";
+
+  const formattedDateTime = `${dayOfWeek}, ${day} ${month} ${year} ${formattedHours}:${formattedMinutes} ${ampm}`;
+
   return (
     <div>
       <section className={styles.news_details}>
@@ -102,11 +143,7 @@ function Newspage({ news }) {
               >
                 {news.title}
               </h1>
-              <h1
-                className={styles.entry_title1}
-              >
-                {news.title}
-              </h1>
+              <h1 className={styles.entry_title1}>{news.title}</h1>
             </div>
             <div className={styles.post_title_left1}>
               <div className={styles.comment_number}>
@@ -134,7 +171,7 @@ function Newspage({ news }) {
                   <div className={styles.fst_btn}>
                     <Link href="/">
                       <i className={styles.comm_icon3}>
-                        <FaFacebook/>
+                        <FaFacebook />
                       </i>
                     </Link>
                   </div>
@@ -178,13 +215,13 @@ function Newspage({ news }) {
                       <i>
                         <FaRegClock />
                       </i>
-                      <span>{news.created_at}</span>
+                      <span>{formattedDateTime}</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className={styles.middle_content}>
               <div className={styles.entry_content}>
                 <div></div>
