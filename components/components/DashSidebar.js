@@ -177,7 +177,7 @@ const DashSidebar = () => {
                         </Link>
                       </li>
                       <li className={styles.list_item}>
-                        <Link href="/dashboard/allnews">
+                        <Link href="/dashboard/postnews">
                           <i>
                             <RiNewspaperLine />
                           </i>

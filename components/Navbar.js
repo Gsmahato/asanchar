@@ -67,12 +67,12 @@ export default function Navbar() {
                   <PiTrendUp />
                 </i>
               </div>
-              <div className={styles.login_account}>
+              <div className={styles.login_account1}>
                 <i className={styles.activity_icon}>
                   <PiUserCircle />
                 </i>
               </div>
-              <div className={styles.nav_menu} onClick={handleMenuClick}>
+              <div className={styles.nav_menu1} onClick={handleMenuClick}>
                 <i className={styles.activity_icon}>
                   <RiMenuLine />
                 </i>

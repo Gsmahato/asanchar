@@ -19,28 +19,28 @@ export default function Footer() {
                   <Link href="/rajniti">राजनीति</Link>
                 </li>
                 <li className={styles.footerdata}>
-                <Link href="/aarthik">आर्थिक</Link>
+                  <Link href="/aarthik">आर्थिक</Link>
                 </li>
                 <li className={styles.footerdata}>
-                <Link href="/bigyanprabidhi">विज्ञान प्रविधि</Link>
+                  <Link href="/bigyanprabidhi">विज्ञान प्रविधि</Link>
                 </li>
                 <li className={styles.footerdata}>
-                <Link href="/swastha">स्वास्थ्य</Link>
+                  <Link href="/swastha">स्वास्थ्य</Link>
                 </li>
                 <li className={styles.footerdata}>
-                <Link href="/khelkud">खेलकुद</Link>
+                  <Link href="/khelkud">खेलकुद</Link>
                 </li>
                 <li className={styles.footerdata}>
-                <Link href="/bichar">विचार</Link>
+                  <Link href="/bichar">विचार</Link>
                 </li>
                 <li className={styles.footerdata}>
-                <Link href="/antarastriya">अन्तराष्ट्रिय</Link>
+                  <Link href="/antarastriya">अन्तराष्ट्रिय</Link>
                 </li>
                 <li className={styles.footerdata}>
-                <Link href="/antarbarta">अन्तर्वार्ता</Link>
+                  <Link href="/antarbarta">अन्तर्वार्ता</Link>
                 </li>
                 <li className={styles.footerdata}>
-                <Link href="/manoranjan">मनोरञ्जन / भिडियो</Link>
+                  <Link href="/manoranjan">मनोरञ्जन / भिडियो</Link>
                 </li>
               </ul>
             </div>
@@ -131,16 +131,33 @@ export default function Footer() {
             <h4>समाचार</h4>
 
             <ul>
-              {/* {cat.map((category) => ( */}
-              <li
-                className={styles.footerdata}
-                // key={category.id}
-                onClick={() => handleMenuItemClick(category.id)}
-              >
-                {/* {category.name} */}
-                hello
-              </li>
-              {/* ))} */}
+            <li className={styles.footerdata}>
+                  <Link href="/rajniti">राजनीति</Link>
+                </li>
+                <li className={styles.footerdata}>
+                  <Link href="/aarthik">आर्थिक</Link>
+                </li>
+                <li className={styles.footerdata}>
+                  <Link href="/bigyanprabidhi">विज्ञान प्रविधि</Link>
+                </li>
+                <li className={styles.footerdata}>
+                  <Link href="/swastha">स्वास्थ्य</Link>
+                </li>
+                <li className={styles.footerdata}>
+                  <Link href="/khelkud">खेलकुद</Link>
+                </li>
+                <li className={styles.footerdata}>
+                  <Link href="/bichar">विचार</Link>
+                </li>
+                <li className={styles.footerdata}>
+                  <Link href="/antarastriya">अन्तराष्ट्रिय</Link>
+                </li>
+                <li className={styles.footerdata}>
+                  <Link href="/antarbarta">अन्तर्वार्ता</Link>
+                </li>
+                <li className={styles.footerdata}>
+                  <Link href="/manoranjan">मनोरञ्जन / भिडियो</Link>
+                </li>
             </ul>
           </div>
         </div>

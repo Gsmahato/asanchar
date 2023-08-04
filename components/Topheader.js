@@ -24,7 +24,7 @@ const Topheader = () => {
     <>
       <div className={styles.topheader}>
         <div className={styles.container}>
-          <div className={styles.login_account1}>
+          <div className={styles.login_account}>
             <i className={styles.activity_icon}>
               <PiUserCircle />
             </i>
@@ -42,7 +42,7 @@ const Topheader = () => {
               <Image src={banner} width={700} height={70} alt="" />
             </div>
           </div> */}
-          <div className={styles.nav_menu1} onClick={handleMenuClick}>
+          <div className={styles.nav_menu} onClick={handleMenuClick}>
             <i className={styles.activity_icon}>
               <RiMenuLine />
             </i>
