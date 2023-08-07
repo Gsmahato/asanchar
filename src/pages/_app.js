@@ -1,13 +1,14 @@
 import { useRouter } from "next/router";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import "@/styles/globals.css";
 import Topheader from "../../components/Topheader";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import styles from "@/styles/Home.module.css";
 import Hottopic from "../../components/Hottopic";
+import { SessionProvider } from "next-auth/react";
 
-export default function App({ Component, pageProps}) {
+export default function App({ Component, pageProps }) {
   const router = useRouter();
   const isAdminPage = router.pathname === "/admin";
   const isDashboardPage = router.pathname.startsWith("/dashboard");
@@ -30,7 +31,6 @@ export default function App({ Component, pageProps}) {
     fetchNewsData();
   }, []);
 
-
   useEffect(() => {
     if (isAdminPage || isDashboardPage) {
       document.body.classList.add("admin-page");
@@ -41,15 +41,15 @@ export default function App({ Component, pageProps}) {
 
   return (
     <>
-      <div className={styles.home_container}>
-        {!isAdminPage && !isDashboardPage && <Topheader />}
-        {!isAdminPage && !isDashboardPage && <Navbar />}
-        {!isAdminPage && !isDashboardPage && <Hottopic newsData={newsData} />}
-        <Component {...pageProps} />
-        {!isAdminPage && !isDashboardPage && <Footer />}
-      </div>
+      <SessionProvider session={pageProps.session}>
+        <div className={styles.home_container}>
+          {!isAdminPage && !isDashboardPage && <Topheader />}
+          {!isAdminPage && !isDashboardPage && <Navbar />}
+          {!isAdminPage && !isDashboardPage && <Hottopic newsData={newsData} />}
+          <Component {...pageProps} />
+          {!isAdminPage && !isDashboardPage && <Footer />}
+        </div>
+      </SessionProvider>
     </>
   );
 }
-
-

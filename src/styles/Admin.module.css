@@ -578,9 +578,12 @@
     display: flex;
   }
  .dashnav{
-    width: 100%;
-    height: 3rem;
-    background-color: #417690;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  height: 4rem;
+  background-color: #417690;
  }
  .dashcontenthome{
   color: #fff;
@@ -608,4 +611,25 @@
 .pagination span.active {
   background-color: #007bff;
   color: #fff;
+}
+.dashnavbar{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.user_tools{
+  color: #fff;
+  align-items: center;
+  display: flex;
+  margin-right: 1rem;
+}
+.user_tools>a{
+  color: #fff;
+  text-decoration: none;
+}
+.admin_btn{
+  background-color: #417690;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
