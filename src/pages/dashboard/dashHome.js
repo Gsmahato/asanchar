@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 
 const DashHome = () => {
   const { data: session } = useSession();
-  console.log(session.user)
   const router = useRouter();
 
   useEffect(() => {
