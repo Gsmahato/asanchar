@@ -181,7 +181,13 @@ const bigyanprabidhi = ({bigyanprabidhisamachar}) => {
 export default bigyanprabidhi;
 
 export async function getStaticProps() {
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
+  const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+
+  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
+    headers: {
+      'X-API-Key': apiKey,
+    }
+  });
   let newsData = await res.json();
   let bigyanprabidhisamachar = newsData.filter((news) => news.category === 14);
   bigyanprabidhisamachar = bigyanprabidhisamachar.sort(

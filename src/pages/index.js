@@ -41,8 +41,14 @@ export default function Home({ newsData, mukhyaNews ,samacharNews,aarthikNews,ra
   );
 }
 
-export async function getStaticProps() {
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
+    export async function getStaticProps() {
+      const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+    
+      const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
+        headers: {
+          'X-API-Key': apiKey,
+        }
+      });
 
   let newsData = await res.json();
   newsData = newsData.sort(
@@ -96,7 +102,7 @@ export async function getStaticProps() {
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
 
-
+  
 
   return {
     props: {

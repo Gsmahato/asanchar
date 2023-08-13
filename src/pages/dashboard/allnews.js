@@ -2,30 +2,10 @@ import React, { useEffect, useState } from "react";
 import DashboardLayout from "../../../components/components/DashboardLayout";
 import styles from "@/styles/Admin.module.css";
 
-const allnews = () => {
-  const [newsList, setNewsList] = useState([]);
+const allnews = ({ newsList }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-  useEffect(() => {
-    const fetchNewsList = async () => {
-      try {
-        const response = await fetch(
-          "https://www.bimaabazar.com/newsportal/news/"
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setNewsList(data);
-        } else {
-          console.error("Failed to fetch news articles.");
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-
-    fetchNewsList();
-  }, []);
 
   const handleDelete = async (id) => {
     const isConfirmed = window.confirm(
@@ -56,7 +36,6 @@ const allnews = () => {
     }
   };
 
-  // Calculate the current items to display based on pagination
   const reversedNewsList = [...newsList].reverse();
 const indexOfLastItem = currentPage * itemsPerPage;
 const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -65,7 +44,6 @@ const currentNewsList = reversedNewsList.slice(
   indexOfLastItem
 );
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -130,5 +108,37 @@ const currentNewsList = reversedNewsList.slice(
     </DashboardLayout>
   );
 };
+
+
+export async function getServerSideProps() {
+  try {
+    const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+    const response = await fetch(
+      "https://www.bimaabazar.com/newsportal/news/",
+      {
+        headers: {
+          'X-API-Key': apiKey,
+        },
+      }
+    );
+    
+    if (response.ok) {
+      const data = await response.json();
+      return {
+        props: { newsList: data },
+      };
+    } else {
+      console.error("Failed to fetch news articles.");
+      return {
+        props: { newsList: [] },
+      };
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    return {
+      props: { newsList: [] },
+    };
+  }
+}
 
 export default allnews;

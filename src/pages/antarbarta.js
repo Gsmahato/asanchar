@@ -73,7 +73,13 @@ const antarbarta = ({antarbartasamachar}) => {
 export default antarbarta;
 
 export async function getStaticProps() {
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
+  const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+
+  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
+    headers: {
+      'X-API-Key': apiKey,
+    }
+  });
   let newsData = await res.json();
   let antarbartasamachar = newsData.filter((news) => news.category === 16);
   antarbartasamachar = antarbartasamachar.sort(

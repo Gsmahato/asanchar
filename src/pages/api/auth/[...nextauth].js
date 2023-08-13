@@ -1,35 +1,67 @@
-import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
+import NextAuth from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
-export const authOptions = {
+export default NextAuth({
   providers: [
     CredentialsProvider({
-      name: "Credentials",
-      credentials: {},
+      credentials: {
+        email: {
+          label: 'Email',
+          type: 'email',
+          placeholder: 'jsmith@example.com',
+        },
+        password: {
+          label: 'Password',
+          type: 'password',
+        },
+      },
       async authorize(credentials, req) {
-        const { username, password } = credentials;
-        const res = await fetch(
-          "https://www.bimaabazar.com/newsportal/login/",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              username,
-              password,
-            }),
-          }
-        );
+        const payload = {
+          email: credentials.email,
+          password: credentials.password,
+        };
+
+        const res = await fetch('https://www.bimaabazar.com/newsportal/login/', {
+          method: 'POST',
+          body: JSON.stringify(payload),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
         const user = await res.json();
+        if (!res.ok) {
+          throw new Error(user.message);
+        }
         if (res.ok && user) {
           return user;
-        } else return null;
+        }
+
+        return null;
       },
     }),
   ],
-  session: {
-    jwt: true,
+  callbacks: {
+    async jwt({ token, user, account }) {
+      if (account && user) {
+        return {
+          ...token,
+          accessToken: user.access,
+          refreshToken: user.refresh,
+        };
+      }
+
+      return token;
+    },
+
+    async session({ session, token }) {
+      session.user.accessToken = token.accessToken;
+      session.user.refreshToken = token.refreshToken;
+      session.user.accessTokenExpires = token.accessTokenExpires;
+
+      return session;
+    },
   },
-};
-export default NextAuth(authOptions);
+  // Enable debug messages in the console if you are having problems
+  debug: process.env.NODE_ENV === 'development',
+});

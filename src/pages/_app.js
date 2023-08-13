@@ -17,12 +17,23 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     const fetchNewsData = async () => {
       try {
-        const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
-        const data = await res.json();
-        const sortedData = data.sort(
-          (a, b) => new Date(b.created_at) - new Date(a.created_at)
-        );
-        setNewsData(sortedData);
+        const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+
+        const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
+          headers: {
+            'X-API-Key': apiKey,
+          },
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          const sortedData = data.sort(
+            (a, b) => new Date(b.created_at) - new Date(a.created_at)
+          );
+          setNewsData(sortedData);
+        } else {
+          console.error("Failed to fetch news data.");
+        }
       } catch (error) {
         console.error("Error fetching news data:", error);
       }
@@ -40,8 +51,8 @@ export default function App({ Component, pageProps }) {
   }, [isAdminPage, isDashboardPage]);
 
   return (
-    <>
-      <SessionProvider session={pageProps.session}>
+    <SessionProvider session={pageProps.session}>
+      <>
         <div className={styles.home_container}>
           {!isAdminPage && !isDashboardPage && <Topheader />}
           {!isAdminPage && !isDashboardPage && <Navbar />}
@@ -49,7 +60,7 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
           {!isAdminPage && !isDashboardPage && <Footer />}
         </div>
-      </SessionProvider>
-    </>
+      </>
+    </SessionProvider>
   );
 }

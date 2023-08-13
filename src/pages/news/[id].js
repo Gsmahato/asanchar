@@ -341,7 +341,13 @@ function Newspage({ news }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
+  const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+
+  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
+    headers: {
+      'X-API-Key': apiKey,
+    }
+  });
   const newsList = await res.json();
 
   const paths = newsList.map((news) => ({

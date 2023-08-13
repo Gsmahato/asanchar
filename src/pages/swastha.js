@@ -84,7 +84,13 @@ const swastha = ({swasthaNews}) => {
 export default swastha
 
 export async function getStaticProps() {
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
+  const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+
+  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
+    headers: {
+      'X-API-Key': apiKey,
+    }
+  });
   let newsData = await res.json();
   let swasthaNews = newsData.filter((news) => news.category === 12);
   swasthaNews = swasthaNews.sort(

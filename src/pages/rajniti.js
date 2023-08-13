@@ -107,7 +107,13 @@ const rajniti = ({rajnitiNews,newsData}) => {
 
 export default rajniti
 export async function getStaticProps() {
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/");
+  const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+
+  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
+    headers: {
+      'X-API-Key': apiKey,
+    }
+  });
   let newsData = await res.json();
   let rajnitiNews = newsData.filter((news) => news.category === 9);
   rajnitiNews = rajnitiNews.sort(

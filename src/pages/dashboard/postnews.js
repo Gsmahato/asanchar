@@ -18,6 +18,8 @@ const postnews = () => {
   const [imageFile, setImageFile] = useState(null);
   const [image, setImage] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [authors, setAuthors] = useState([]);
+
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -76,15 +78,22 @@ const postnews = () => {
     console.log(formData);
 
     try {
+      const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+
       const response = await fetch(
         "https://www.bimaabazar.com/newsportal/news/",
+        {
+          headers: {
+            "X-API-Key": apiKey,
+          },
+        },
         {
           method: "POST",
           body: formData,
         }
       );
-      console.log(response);
-
+      const uniqueAuthors = [...new Set(data.map((news) => news.author))];
+      setAuthors(uniqueAuthors);
       if (response.ok) {
         console.log("News posted successfully:", response.data);
         toast.success("News added successfully");
@@ -198,13 +207,19 @@ const postnews = () => {
                           <div className={styles.content_col}>
                             <div className={styles.content_col_form_group}>
                               <label htmlFor="author">Author</label>
-                              <input
-                                type="text"
+                              <select
                                 name="author"
-                                required
                                 value={author}
-                                onChange={(e) => setAuthor(e.target.value)}
-                              />
+                                onChange={(e) => setAuthors(e.target.value)}
+                                required
+                              >
+                                <option value="">Select an author</option>
+                                {authors.map((author) => (
+                                  <option key={author} value={author}>
+                                    {author}
+                                  </option>
+                                ))}
+                              </select>
                             </div>
                           </div>
                         </div>
