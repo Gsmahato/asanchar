@@ -25,9 +25,7 @@ function formatTime(minutes) {
   }
 }
 
-const khelkud = ({khelkudsamachar}) => {
-
-
+const khelkud = ({ khelkudsamachar }) => {
   return (
     <section className={styles.manoranjan_section}>
       <div className={styles.E_container}>
@@ -35,34 +33,35 @@ const khelkud = ({khelkudsamachar}) => {
           <h2 className={styles.E_title_part_total}>खेलकुद</h2>
         </div>
         <div className={styles.Enter_grid_12}>
-          {khelkudsamachar.map((khelkudItem)=>(
-          <div className={styles.span_4} key={khelkudItem.id}>
-            <div className={styles.Enter_spot_news}>
-              <Link href={`/news/${khelkudItem.id}`}>
-                <Image
-                  className={styles.M_image}
-                  src={`https://www.bimaabazar.com/${khelkudItem.image1}`}
-                  alt="khelkud"
-                  width={500}
-                  height={400}
-                />
-                <div className={styles.post_content1}>
-                  <h2 className={styles.E_title_text1}>
-                    {khelkudItem.title}
-                    
-                  </h2>
-                  <div className={styles.title_in}>
-                    <div className={styles.M_post_hour}>
-                      <i>
-                        <FaRegClock />
-                      </i>
-                      <span>{formatTime(getMinutesAgo(khelkudItem.created_at))}</span>
+          {khelkudsamachar.map((khelkudItem) => (
+            <div className={styles.span_4} key={khelkudItem.id}>
+              <div className={styles.Enter_spot_news}>
+                <Link href={`/news/${khelkudItem.id}`}>
+                  <Image
+                    className={styles.M_image}
+                    src={`https://www.bimaabazar.com/${khelkudItem.image1}`}
+                    alt="khelkud"
+                    width={500}
+                    height={400}
+                  />
+                  <div className={styles.post_content1}>
+                    <h2 className={styles.E_title_text1}>
+                      {khelkudItem.title}
+                    </h2>
+                    <div className={styles.title_in}>
+                      <div className={styles.M_post_hour}>
+                        <i>
+                          <FaRegClock />
+                        </i>
+                        <span>
+                          {formatTime(getMinutesAgo(khelkudItem.created_at))}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
-          </div>
           ))}
         </div>
       </div>
@@ -72,13 +71,13 @@ const khelkud = ({khelkudsamachar}) => {
 
 export default khelkud;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
   const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
     headers: {
-      'X-API-Key': apiKey,
-    }
+      "X-API-Key": apiKey,
+    },
   });
   let newsData = await res.json();
   let khelkudsamachar = newsData.filter((news) => news.category === 13);

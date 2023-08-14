@@ -25,9 +25,7 @@ function formatTime(minutes) {
   }
 }
 
-const bichar = ({bicharsamachar}) => {
-
-
+const bichar = ({ bicharsamachar }) => {
   return (
     <section className={styles.manoranjan_section}>
       <div className={styles.E_container}>
@@ -35,34 +33,33 @@ const bichar = ({bicharsamachar}) => {
           <h2 className={styles.E_title_part_total}>विचार</h2>
         </div>
         <div className={styles.Enter_grid_12}>
-          {bicharsamachar.map((bicharItem)=>(
-          <div className={styles.span_4} key={bicharItem.id}>
-            <div className={styles.Enter_spot_news}>
-              <Link href={`/news/${bicharItem.id}`}>
-                <Image
-                  className={styles.M_image}
-                  src={`https://www.bimaabazar.com/${bicharItem.image1}`}
-                  alt="bichar"
-                  width={500}
-                  height={400}
-                />
-                <div className={styles.post_content1}>
-                  <h2 className={styles.E_title_text1}>
-                    {bicharItem.title}
-                    
-                  </h2>
-                  <div className={styles.title_in}>
-                    <div className={styles.M_post_hour}>
-                      <i>
-                        <FaRegClock />
-                      </i>
-                      <span>{formatTime(getMinutesAgo(bicharItem.created_at))}</span>
+          {bicharsamachar.map((bicharItem) => (
+            <div className={styles.span_4} key={bicharItem.id}>
+              <div className={styles.Enter_spot_news}>
+                <Link href={`/news/${bicharItem.id}`}>
+                  <Image
+                    className={styles.M_image}
+                    src={`https://www.bimaabazar.com/${bicharItem.image1}`}
+                    alt="bichar"
+                    width={500}
+                    height={400}
+                  />
+                  <div className={styles.post_content1}>
+                    <h2 className={styles.E_title_text1}>{bicharItem.title}</h2>
+                    <div className={styles.title_in}>
+                      <div className={styles.M_post_hour}>
+                        <i>
+                          <FaRegClock />
+                        </i>
+                        <span>
+                          {formatTime(getMinutesAgo(bicharItem.created_at))}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
-          </div>
           ))}
         </div>
       </div>
@@ -72,13 +69,13 @@ const bichar = ({bicharsamachar}) => {
 
 export default bichar;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
   const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
     headers: {
-      'X-API-Key': apiKey,
-    }
+      "X-API-Key": apiKey,
+    },
   });
   let newsData = await res.json();
   let bicharsamachar = newsData.filter((news) => news.category === 14);

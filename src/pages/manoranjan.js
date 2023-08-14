@@ -25,9 +25,7 @@ function formatTime(minutes) {
   }
 }
 
-const manoranjan = ({manoranjansamachar}) => {
-
-
+const manoranjan = ({ manoranjansamachar }) => {
   return (
     <section className={styles.manoranjan_section}>
       <div className={styles.E_container}>
@@ -35,34 +33,35 @@ const manoranjan = ({manoranjansamachar}) => {
           <h2 className={styles.E_title_part_total}>मनोरञ्जन</h2>
         </div>
         <div className={styles.Enter_grid_12}>
-          {manoranjansamachar.map((manoranjanItem)=>(
-          <div className={styles.span_4} key={manoranjanItem.id}>
-            <div className={styles.Enter_spot_news}>
-              <Link href={`/news/${manoranjanItem.id}`}>
-                <Image
-                  className={styles.M_image}
-                  src={`https://www.bimaabazar.com/${manoranjanItem.image1}`}
-                  alt="manoranjan"
-                  width={500}
-                  height={400}
-                />
-                <div className={styles.post_content1}>
-                  <h2 className={styles.E_title_text1}>
-                    {manoranjanItem.title}
-                    
-                  </h2>
-                  <div className={styles.title_in}>
-                    <div className={styles.M_post_hour}>
-                      <i>
-                        <FaRegClock />
-                      </i>
-                      <span>{formatTime(getMinutesAgo(manoranjanItem.created_at))}</span>
+          {manoranjansamachar.map((manoranjanItem) => (
+            <div className={styles.span_4} key={manoranjanItem.id}>
+              <div className={styles.Enter_spot_news}>
+                <Link href={`/news/${manoranjanItem.id}`}>
+                  <Image
+                    className={styles.M_image}
+                    src={`https://www.bimaabazar.com/${manoranjanItem.image1}`}
+                    alt="manoranjan"
+                    width={500}
+                    height={400}
+                  />
+                  <div className={styles.post_content1}>
+                    <h2 className={styles.E_title_text1}>
+                      {manoranjanItem.title}
+                    </h2>
+                    <div className={styles.title_in}>
+                      <div className={styles.M_post_hour}>
+                        <i>
+                          <FaRegClock />
+                        </i>
+                        <span>
+                          {formatTime(getMinutesAgo(manoranjanItem.created_at))}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
-          </div>
           ))}
         </div>
       </div>
@@ -72,13 +71,13 @@ const manoranjan = ({manoranjansamachar}) => {
 
 export default manoranjan;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
   const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
     headers: {
-      'X-API-Key': apiKey,
-    }
+      "X-API-Key": apiKey,
+    },
   });
   let newsData = await res.json();
   let manoranjansamachar = newsData.filter((news) => news.category === 17);

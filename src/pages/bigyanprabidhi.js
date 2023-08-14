@@ -8,7 +8,7 @@ import prachar from "../../public/prachar.gif";
 import rightbanner1 from "../../public/rightbanner1.gif";
 import { MdArrowForwardIos, MdArrowForward } from "react-icons/md";
 
-const bigyanprabidhi = ({bigyanprabidhisamachar}) => {
+const bigyanprabidhi = ({ bigyanprabidhisamachar }) => {
   const bigyan = bigyanprabidhisamachar[0];
   const bigyanremain = bigyanprabidhisamachar.slice(1);
   return (
@@ -16,9 +16,7 @@ const bigyanprabidhi = ({bigyanprabidhisamachar}) => {
       <div className={styles.news_container}>
         <div className={styles.col_left}>
           <div className={styles.section_title}>
-            <h2 className={styles.title_part}>
-              विज्ञान प्रविधि
-            </h2>
+            <h2 className={styles.title_part}>विज्ञान प्रविधि</h2>
           </div>
           <div className={styles.grid_12}>
             <div className={styles.span_12}>
@@ -63,7 +61,7 @@ const bigyanprabidhi = ({bigyanprabidhisamachar}) => {
                   </Link>
                 </div>
               </div>
-             ))}
+            ))}
           </div>
         </div>
         <div className={styles.col_right}>
@@ -180,13 +178,13 @@ const bigyanprabidhi = ({bigyanprabidhisamachar}) => {
 
 export default bigyanprabidhi;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
   const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
     headers: {
-      'X-API-Key': apiKey,
-    }
+      "X-API-Key": apiKey,
+    },
   });
   let newsData = await res.json();
   let bigyanprabidhisamachar = newsData.filter((news) => news.category === 14);

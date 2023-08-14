@@ -340,25 +340,10 @@ function Newspage({ news }) {
   );
 }
 
-export async function getStaticPaths() {
-  const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-    headers: {
-      'X-API-Key': apiKey,
-    }
-  });
-  const newsList = await res.json();
-  console.log(newsList)
 
-  const paths = newsList.map((news) => ({
-    params: { id: news.id.toString() },
-  }));
-
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
+  
   const res = await fetch(
     `https://www.bimaabazar.com/newsportal/news/${params.id}`
   );

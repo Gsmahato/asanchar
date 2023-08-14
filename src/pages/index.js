@@ -11,10 +11,22 @@ import Health from "../../components/Health";
 import International from "../../components/International";
 import Interview from "../../components/Interview";
 
-
-export default function Home({ newsData, mukhyaNews ,samacharNews,aarthikNews,rajnitiNews,bigyanprabidhiNews,entertainmentNews,khelkudNews,healthNews,internationalNews,interviewNews,thoughtNews}) {
+export default function Home({
+  newsData,
+  mukhyaNews,
+  samacharNews,
+  aarthikNews,
+  rajnitiNews,
+  bigyanprabidhiNews,
+  entertainmentNews,
+  khelkudNews,
+  healthNews,
+  internationalNews,
+  interviewNews,
+  thoughtNews,
+}) {
   const latestNews = newsData.filter((news) => news.latest);
-  const trendingNews =newsData.filter((news) => news.trending);
+  const trendingNews = newsData.filter((news) => news.trending);
 
   return (
     <>
@@ -28,27 +40,27 @@ export default function Home({ newsData, mukhyaNews ,samacharNews,aarthikNews,ra
         return <Latestnews key={news.id} news={news} />;
       })}
       <Mukhya mukhyaNews={mukhyaNews} />
-      <Samachar  samacharNews={samacharNews} />
-      <Aarthik aarthikNews={aarthikNews}/>
-      <Rajniti rajnitiNews={rajnitiNews} trendingNews={trendingNews}/>
-      <Entertainment entertainmentNews={entertainmentNews}/>
-      <BigyanPrabhidhi bigyanprabidhiNews={bigyanprabidhiNews}/>
-      <Khelkud khelkudNews={khelkudNews}/>
-      <Health healthNews={healthNews}/>
-      <International internationalNews={internationalNews}/>
-      <Interview interviewNews={interviewNews} thoughtNews={thoughtNews}/>
+      <Samachar samacharNews={samacharNews} />
+      <Aarthik aarthikNews={aarthikNews} />
+      <Rajniti rajnitiNews={rajnitiNews} trendingNews={trendingNews} />
+      <Entertainment entertainmentNews={entertainmentNews} />
+      <BigyanPrabhidhi bigyanprabidhiNews={bigyanprabidhiNews} />
+      <Khelkud khelkudNews={khelkudNews} />
+      <Health healthNews={healthNews} />
+      <International internationalNews={internationalNews} />
+      <Interview interviewNews={interviewNews} thoughtNews={thoughtNews} />
     </>
   );
 }
 
-    export async function getStaticProps() {
-      const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
-    
-      const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-        headers: {
-          'X-API-Key': apiKey,
-        }
-      });
+export async function getServerSideProps() {
+  const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+
+  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
+    headers: {
+      "X-API-Key": apiKey,
+    },
+  });
 
   let newsData = await res.json();
   newsData = newsData.sort(
@@ -101,8 +113,6 @@ export default function Home({ newsData, mukhyaNews ,samacharNews,aarthikNews,ra
   thoughtNews = thoughtNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-
-  
 
   return {
     props: {

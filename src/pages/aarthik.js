@@ -1,4 +1,3 @@
-
 import React from "react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
@@ -18,8 +17,8 @@ function truncateContent(content, maxWords) {
   return truncated + (words.length > maxWords ? "..." : "");
 }
 
-const aarthik = ({aarthikNews}) => {
-  const aarthikNewsfirst=aarthikNews[0];
+const aarthik = ({ aarthikNews }) => {
+  const aarthikNewsfirst = aarthikNews[0];
   const aarthikNewsremaining = aarthikNews.slice(1);
 
   return (
@@ -33,18 +32,19 @@ const aarthik = ({aarthikNews}) => {
             <div className={styles.samachar_spot_news_bijnesh}>
               <div className={styles.post_img_2_bijnesh}>
                 <Link href={`/news/${aarthikNewsfirst.id}`}>
-                  <Image src={`https://www.bimaabazar.com/${aarthikNewsfirst.image1}`} alt="aarthik" width={580} height={508} />
+                  <Image
+                    src={`https://www.bimaabazar.com/${aarthikNewsfirst.image1}`}
+                    alt="aarthik"
+                    width={580}
+                    height={508}
+                  />
                 </Link>
               </div>
               <div className={styles.post_title_2}>
                 <Link href={`/news/${aarthikNewsfirst.id}`}>
-                  <h4>
-                    {aarthikNewsfirst.title}
-                  </h4>
+                  <h4>{aarthikNewsfirst.title}</h4>
                 </Link>
-                <p>
-                {truncateContent(aarthikNewsfirst.content, 40)}
-                </p>
+                <p>{truncateContent(aarthikNewsfirst.content, 40)}</p>
               </div>
             </div>
           </div>
@@ -53,19 +53,27 @@ const aarthik = ({aarthikNews}) => {
             data-device-type="desktop"
           ></div>
           <div className={styles.grid_12}>
-            {aarthikNewsremaining.map((aarthikItem)=>(
-            <div className={styles.span_4_bijnesh} key={aarthikItem.id}>
-              <div className={styles.post_1tr_binesh}>
-                <Link className={styles.post_con_bijnesh} href={`/news/${aarthikItem.id}`}>
-                  <Image src={`https://www.bimaabazar.com/${aarthikItem.image1}`} alt="aarthik" width={386} height={254} />
-                  <div className={styles.content_wrap_bijnesh}>
-                    <h2 className={styles.title_text_bijnesh}>
-                     {aarthikItem.title}
-                    </h2>
-                  </div>
-                </Link>
+            {aarthikNewsremaining.map((aarthikItem) => (
+              <div className={styles.span_4_bijnesh} key={aarthikItem.id}>
+                <div className={styles.post_1tr_binesh}>
+                  <Link
+                    className={styles.post_con_bijnesh}
+                    href={`/news/${aarthikItem.id}`}
+                  >
+                    <Image
+                      src={`https://www.bimaabazar.com/${aarthikItem.image1}`}
+                      alt="aarthik"
+                      width={386}
+                      height={254}
+                    />
+                    <div className={styles.content_wrap_bijnesh}>
+                      <h2 className={styles.title_text_bijnesh}>
+                        {aarthikItem.title}
+                      </h2>
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
             ))}
           </div>
           {/* <div className={styles.pagination_content}>
@@ -81,15 +89,15 @@ const aarthik = ({aarthikNews}) => {
   );
 };
 
-export default aarthik
+export default aarthik;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
   const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
     headers: {
-      'X-API-Key': apiKey,
-    }
+      "X-API-Key": apiKey,
+    },
   });
   let newsData = await res.json();
   let aarthikNews = newsData.filter((news) => news.category === 10);
