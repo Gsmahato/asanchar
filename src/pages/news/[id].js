@@ -349,6 +349,7 @@ export async function getStaticPaths() {
     }
   });
   const newsList = await res.json();
+  console.log(newsList)
 
   const paths = newsList.map((news) => ({
     params: { id: news.id.toString() },
