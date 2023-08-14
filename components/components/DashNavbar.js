@@ -12,7 +12,6 @@ const DashNavbar = () => {
   if (!session) {
     return null;
   }
-
   return (
     <>
       <div className={styles.dashnav}>

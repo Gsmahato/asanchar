@@ -13,12 +13,10 @@ const postnews = () => {
   const [category, setCategory] = useState("");
   const [featured, setFeatured] = useState(false);
   const [trending, setTrending] = useState(false);
-
   const [latest, setLatest] = useState(false);
   const [imageFile, setImageFile] = useState(null);
   const [image, setImage] = useState(null);
   const [categories, setCategories] = useState([]);
-  const [authors, setAuthors] = useState([]);
 
 
   useEffect(() => {
@@ -83,20 +81,14 @@ const postnews = () => {
       const response = await fetch(
         "https://www.bimaabazar.com/newsportal/news/",
         {
+          method: "POST",
           headers: {
             "X-API-Key": apiKey,
           },
-        },
-        {
-          method: "POST",
           body: formData,
         }
       );
-      const uniqueAuthors = [...new Set(data.map((news) => news.author))];
-      setAuthors(uniqueAuthors);
       if (response.ok) {
-        console.log("News posted successfully:", response.data);
-        toast.success("News added successfully");
         setTitle("");
         setSlug("");
         setContent("");
@@ -107,15 +99,19 @@ const postnews = () => {
         setTrending(false);
         setImageFile(null);
         setImage(null);
+        toast.success("News Posted successfully", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+
       } else {
         console.log("An error occurred");
-        toast.error("Login failed", {
+        toast.error("failed", {
           position: toast.POSITION.TOP_CENTER,
         });
       }
     } catch (error) {
       console.log(error);
-      toast.error("Login failed", {
+      toast.error("failed", {
         position: toast.POSITION.TOP_CENTER,
       });
     }
@@ -165,13 +161,6 @@ const postnews = () => {
                         <div className={styles.row}>
                           <div className={styles.content_col}>
                             <div className={styles.content_col_form_group}>
-                              {/* <NewsEditor
-                              value={content}
-                              onChange={(e) => setContent(e.target.value)}
-                              required
-                              content={content}
-                              setContent={setContent}
-                            /> */}
                               <textarea
                                 name="news_content"
                                 required
@@ -206,20 +195,14 @@ const postnews = () => {
                         <div className={styles.row}>
                           <div className={styles.content_col}>
                             <div className={styles.content_col_form_group}>
-                              <label htmlFor="author">Author</label>
-                              <select
+                            <input
+                                type="text"
                                 name="author"
-                                value={author}
-                                onChange={(e) => setAuthors(e.target.value)}
                                 required
-                              >
-                                <option value="">Select an author</option>
-                                {authors.map((author) => (
-                                  <option key={author} value={author}>
-                                    {author}
-                                  </option>
-                                ))}
-                              </select>
+                                placeholder="author *"
+                                value={author}
+                                onChange={(e) => setAuthor(e.target.value)}
+                              />
                             </div>
                           </div>
                         </div>
@@ -300,6 +283,7 @@ const postnews = () => {
                       </li>
                     </ul>
                   </form>
+                  <ToastContainer/>
                 </div>
               </div>
             </div>
