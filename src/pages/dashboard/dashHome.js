@@ -1,22 +1,18 @@
 import React, { useEffect } from "react";
 import DashboardLayout from "../../../components/components/DashboardLayout";
 import styles from "@/styles/Admin.module.css";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 const DashHome = () => {
-  const { data: session } = useSession();
   const router = useRouter();
 
   useEffect(() => {
-    if (!session) {
+    const accessToken = localStorage.getItem("access_token");
+
+    if (!accessToken) {
       router.push("/admin");
     }
-  }, [session, router]);
-
-  if (!session) {
-    return null;
-  }
+  }, [router]);
 
   return (
     <DashboardLayout>
