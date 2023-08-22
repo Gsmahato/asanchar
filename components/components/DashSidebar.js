@@ -32,10 +32,12 @@ const DashSidebar = () => {
         <div className={styles.sidebar_scroll}>
           <div className={styles.sidebar_inner}>
             <h5 className={styles.sidebar_heading}>
+              <Link href="/dashboard/dashHome">
               <i>
                 <RiDashboardLine />
               </i>
               Dashboard
+              </Link>
             </h5>
             <div className={styles.multimenu}>
               <ul className={styles.multimenu_container}>

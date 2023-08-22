@@ -23,7 +23,7 @@ const Rajniti = ({rajnitiNews,trendingNews}) => {
           <div className={styles.section_title}>
             <h2 className={styles.title_part}>
               राजनीति
-              <ul className={styles.title_pradesh_num}>
+              {/* <ul className={styles.title_pradesh_num}>
                 <Link href="/">१</Link>
                 <Link href="/">२</Link>
                 <Link href="/">३</Link>
@@ -31,7 +31,7 @@ const Rajniti = ({rajnitiNews,trendingNews}) => {
                 <Link href="/">५</Link>
                 <Link href="/">६</Link>
                 <Link href="/">७</Link>
-              </ul>
+              </ul> */}
               <Link href="/rajniti">
                 <i className={styles.F_arrow}>
                   <MdArrowForwardIos />

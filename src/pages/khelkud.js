@@ -7,6 +7,7 @@ import digital from "../../public/digital.jpg";
 import prachar from "../../public/prachar.gif";
 import { MdArrowForwardIos } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
+import Head from "next/head";
 
 function getMinutesAgo(created_at) {
   const createdDate = new Date(created_at);
@@ -28,6 +29,9 @@ function formatTime(minutes) {
 const khelkud = ({ khelkudsamachar }) => {
   return (
     <section className={styles.manoranjan_section}>
+      <Head>
+        <title>खेलकुद</title>
+      </Head>
       <div className={styles.E_container}>
         <div className={styles.E_section_title}>
           <h2 className={styles.E_title_part_total}>खेलकुद</h2>

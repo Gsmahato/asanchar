@@ -7,12 +7,17 @@ import digital from "../../public/digital.jpg";
 import prachar from "../../public/prachar.gif";
 import rightbanner1 from "../../public/rightbanner1.gif";
 import { MdArrowForwardIos, MdArrowForward } from "react-icons/md";
+import Head from "next/head";
 
 const bigyanprabidhi = ({ bigyanprabidhisamachar }) => {
   const bigyan = bigyanprabidhisamachar[0];
   const bigyanremain = bigyanprabidhisamachar.slice(1);
   return (
     <section className={styles.bijnesh_samachar}>
+      <Head>
+        <title>विज्ञान प्रविधि</title>
+      </Head>
+
       <div className={styles.news_container}>
         <div className={styles.col_left}>
           <div className={styles.section_title}>

@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import ANSU from "../../public/ANSU.jpg";
+import Head from "next/head";
 // import prachar from "@/public/prachar.gif";
 // import rightbanner1 from "@/public/rightbanner1.gif";
 // import { MdArrowForwardIos } from "react-icons/md";
@@ -23,6 +24,8 @@ const swastha = ({ swasthaNews }) => {
 
   return (
     <section className={styles.bijnesh_samachar}>
+            <Head><title>स्वास्थ्य</title></Head>
+
       <div className={styles.news_container}>
         <div className={styles.col_left_bijnesh}>
           <div className={styles.section_title}>

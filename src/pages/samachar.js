@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import ANSU from "../../public/ANSU.jpg";
+import Head from "next/head";
 
 function truncateContent(content, maxWords) {
   if (typeof content !== "string") {
@@ -18,6 +19,7 @@ const samachar = ({ samacharNews }) => {
   const samacharNewsremaining = samacharNews.slice(1);
   return (
     <section className={styles.bijnesh_samachar}>
+      <Head><title>समाचार</title></Head>
       <div className={styles.news_container}>
         <div className={styles.col_left_bijnesh}>
           <div className={styles.section_title}>

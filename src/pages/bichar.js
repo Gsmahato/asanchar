@@ -7,6 +7,7 @@ import digital from "../../public/digital.jpg";
 import prachar from "../../public/prachar.gif";
 import { MdArrowForwardIos } from "react-icons/md";
 import { FaRegClock } from "react-icons/fa";
+import Head from "next/head";
 
 function getMinutesAgo(created_at) {
   const createdDate = new Date(created_at);
@@ -19,15 +20,20 @@ function getMinutesAgo(created_at) {
 function formatTime(minutes) {
   if (minutes < 60) {
     return `${minutes} minutes ago`;
-  } else {
+  } else if (minutes < 1440) { // Less than 24 hours
     const hours = Math.floor(minutes / 60);
     return `${hours} hours ago`;
+  } else {
+    const days = Math.floor(minutes / 1440);
+    return `${days} day${days > 1 ? 's' : ''} ago`;
   }
 }
 
 const bichar = ({ bicharsamachar }) => {
   return (
     <section className={styles.manoranjan_section}>
+            <Head><title>विचार</title></Head>
+
       <div className={styles.E_container}>
         <div className={styles.E_section_title}>
           <h2 className={styles.E_title_part_total}>विचार</h2>

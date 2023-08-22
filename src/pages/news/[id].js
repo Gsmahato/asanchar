@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import { MdArrowForwardIos } from "react-icons/md";
 import NepaliDate from "nepali-date-converter";
+import Head from "next/head";
 
 function Newspage({ news }) {
   const [isScrollingDown, setIsScrollingDown] = useState(false);
@@ -81,6 +82,9 @@ function Newspage({ news }) {
 
   return (
     <div>
+      <Head>
+        <title>{news.title}</title>
+      </Head>
       <section className={styles.news_details}>
         <div className={styles.ad_banner}></div>
       </section>
@@ -297,7 +301,7 @@ function Newspage({ news }) {
                         data-alias="home-mukhya-right"
                         data-device-type="desktop"
                       >
-                        <div className={styles.each_ad}>
+                        {/* <div className={styles.each_ad}>
                           <Link href="/">
                             <Image
                               src={rightbanner1}
@@ -306,8 +310,8 @@ function Newspage({ news }) {
                               alt=""
                             />
                           </Link>
-                        </div>
-                        <div className={styles.each_ad}>
+                        </div> */}
+                        {/* <div className={styles.each_ad}>
                           <Link href="/">
                             <Image
                               src={rightbanner1}
@@ -316,8 +320,8 @@ function Newspage({ news }) {
                               alt=""
                             />
                           </Link>
-                        </div>
-                        <div className={styles.each_ad}>
+                        </div> */}
+                        {/* <div className={styles.each_ad}>
                           <Link href="/">
                             <Image
                               src={rightbanner1}
@@ -326,7 +330,7 @@ function Newspage({ news }) {
                               alt=""
                             />
                           </Link>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>

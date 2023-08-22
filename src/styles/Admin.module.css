@@ -260,6 +260,10 @@
     display: flex;
     align-items: center;
   }
+  .sidebar_heading>a{
+    text-decoration: none;
+    color: #fff;
+  }
   .sidebar_heading>i>svg{
     width: 1rem;
     height: 1rem;

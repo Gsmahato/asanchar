@@ -4,6 +4,7 @@ import Link from "next/link";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Admin = () => {
   const [username, setUsername] = useState("");
@@ -22,13 +23,16 @@ const Admin = () => {
 
     try {
       // Make API call to authenticate
-      const response = await fetch("https://www.bimaabazar.com/newsportal/login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await fetch(
+        "https://www.bimaabazar.com/newsportal/login/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username, password }),
+        }
+      );
 
       const data = await response.json();
 
@@ -55,6 +59,10 @@ const Admin = () => {
   };
   return (
     <div className={styles.admin_container}>
+      <Head>
+        <title>abiralsanchar</title>
+      </Head>
+
       <div className={styles.header}>
         <div className={styles.branding}>
           <h1 className={styles.site_name}>

@@ -18,9 +18,12 @@ function getMinutesAgo(created_at) {
 function formatTime(minutes) {
   if (minutes < 60) {
     return `${minutes} minutes ago`;
-  } else {
+  } else if (minutes < 1440) { // Less than 24 hours
     const hours = Math.floor(minutes / 60);
     return `${hours} hours ago`;
+  } else {
+    const days = Math.floor(minutes / 1440);
+    return `${days} day${days > 1 ? 's' : ''} ago`;
   }
 }
 
