@@ -18,12 +18,13 @@ function getMinutesAgo(created_at) {
 function formatTime(minutes) {
   if (minutes < 60) {
     return `${minutes} minutes ago`;
-  } else if (minutes < 1440) { // Less than 24 hours
+  } else if (minutes < 1440) {
+    // Less than 24 hours
     const hours = Math.floor(minutes / 60);
     return `${hours} hours ago`;
   } else {
     const days = Math.floor(minutes / 1440);
-    return `${days} day${days > 1 ? 's' : ''} ago`;
+    return `${days} day${days > 1 ? "s" : ""} ago`;
   }
 }
 
@@ -42,7 +43,7 @@ export default function Mukhya({ mukhyaNews }) {
                   <Link href={`/news/${firstNews.id}`}>
                     <Image
                       className={styles.M_image}
-                      src={`https://www.bimaabazar.com/${firstNews.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${firstNews.image1}`}
                       alt="mukhya"
                       width={700}
                       height={580}
@@ -54,34 +55,46 @@ export default function Mukhya({ mukhyaNews }) {
                           <i>
                             <FaRegClock />
                           </i>
-                          <span>{formatTime(getMinutesAgo(firstNews.created_at))}</span>
+                          <span>
+                            {formatTime(getMinutesAgo(firstNews.created_at))}
+                          </span>
                         </div>
                       </div>
                     </div>
                   </Link>
                 </div>
               </div>
-              {remainingNews.map((fourNews,index)=>(
-              <div className={styles.span_5} key={index}>
-                <div className={styles.post_2tr}>
-                  <Link className={styles.post_con} href={`/news/${fourNews.id}`}>
-                    <Image src={`https://www.bimaabazar.com/${fourNews.image1}`} alt="mukhya" width={134} height={82} />
-                    <div className={styles.M_content_wrap}>
-                      <h2 className={styles.title_text_M}>
-                        {fourNews.title}
-                      </h2>
-                      <div className={styles.title_info_m}>
-                        <div className={styles.post_hour_m}>
-                          <i>
-                            <FaRegClock />
-                          </i>
-                          <span>{formatTime(getMinutesAgo(fourNews.created_at))}</span>
+              {remainingNews.map((fourNews, index) => (
+                <div className={styles.span_5} key={index}>
+                  <div className={styles.post_2tr}>
+                    <Link
+                      className={styles.post_con}
+                      href={`/news/${fourNews.id}`}
+                    >
+                      <Image
+                        src={`https://prajjwalacharya.pythonanywhere.com/${fourNews.image1}`}
+                        alt="mukhya"
+                        width={134}
+                        height={82}
+                      />
+                      <div className={styles.M_content_wrap}>
+                        <h2 className={styles.title_text_M}>
+                          {fourNews.title}
+                        </h2>
+                        <div className={styles.title_info_m}>
+                          <div className={styles.post_hour_m}>
+                            <i>
+                              <FaRegClock />
+                            </i>
+                            <span>
+                              {formatTime(getMinutesAgo(fourNews.created_at))}
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </div>
-              </div>
               ))}
               <div className={styles.span_5}>
                 <Link href="/" className={styles.quick_update_24}>

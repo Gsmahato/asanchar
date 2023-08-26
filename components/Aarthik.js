@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/Home.module.css"
+import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import ANSU from "../public/ANSU.jpg";
@@ -17,11 +17,10 @@ function truncateContent(content, maxWords) {
   return truncated + (words.length > maxWords ? "..." : "");
 }
 
-const Aarthik = ({aarthikNews}) => {
+const Aarthik = ({ aarthikNews }) => {
   const aarthikfirst = aarthikNews[0];
   const aarthiksecond = aarthikNews.slice(1, 13);
-  const aarthiklast =aarthikNews.slice(14,20)
-
+  const aarthiklast = aarthikNews.slice(14, 20);
 
   return (
     <section className={styles.bijnesh_samachar}>
@@ -76,18 +75,19 @@ const Aarthik = ({aarthikNews}) => {
               <div className={styles.samachar_spot_news}>
                 <div className={styles.post_img_2}>
                   <Link href={`/news/${aarthikfirst.id}`}>
-                    <Image src={`https://www.bimaabazar.com/${aarthikfirst.image1}`} alt="aarthik" width={580} height={508} />
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${aarthikfirst.image1}`}
+                      alt="aarthik"
+                      width={580}
+                      height={508}
+                    />
                   </Link>
                 </div>
                 <div className={styles.post_title_2}>
                   <Link href={`/news/${aarthikfirst.id}`}>
-                    <h4>
-                      {aarthikfirst.title}
-                    </h4>
+                    <h4>{aarthikfirst.title}</h4>
                   </Link>
-                  <p>
-                  {truncateContent(aarthikfirst.content, 40)}
-                  </p>
+                  <p>{truncateContent(aarthikfirst.content, 40)}</p>
                 </div>
               </div>
             </div>
@@ -95,19 +95,25 @@ const Aarthik = ({aarthikNews}) => {
               className={styles.home_samachar}
               data-device-type="desktop"
             ></div>
-            {aarthiksecond.map((secondnews)=>(
-            <div className={styles.span_6} key={secondnews.id}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href={`/news/${secondnews.id}`}>
-                  <Image src={`https://www.bimaabazar.com/${secondnews.image1}`} alt="aarthik" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      {secondnews.title}
-                    </h2>
-                  </div>
-                </Link>
+            {aarthiksecond.map((secondnews) => (
+              <div className={styles.span_6} key={secondnews.id}>
+                <div className={styles.post_1tr}>
+                  <Link
+                    className={styles.post_con}
+                    href={`/news/${secondnews.id}`}
+                  >
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${secondnews.image1}`}
+                      alt="aarthik"
+                      width={134}
+                      height={82}
+                    />
+                    <div className={styles.content_wrap}>
+                      <h2 className={styles.title_text}>{secondnews.title}</h2>
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
             ))}
           </div>
           <div className={styles.prachar}>
@@ -116,19 +122,25 @@ const Aarthik = ({aarthikNews}) => {
             </div>
           </div>
           <div className={styles.grid_12}>
-          {aarthiklast.map((lastnews)=>(
-            <div className={styles.span_6} key={lastnews}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href={`/news/${lastnews.id}`}>
-                  <Image src={`https://www.bimaabazar.com/${lastnews.image1}`} alt="aarthik" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                     {lastnews.title}
-                    </h2>
-                  </div>
-                </Link>
+            {aarthiklast.map((lastnews) => (
+              <div className={styles.span_6} key={lastnews}>
+                <div className={styles.post_1tr}>
+                  <Link
+                    className={styles.post_con}
+                    href={`/news/${lastnews.id}`}
+                  >
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${lastnews.image1}`}
+                      alt="aarthik"
+                      width={134}
+                      height={82}
+                    />
+                    <div className={styles.content_wrap}>
+                      <h2 className={styles.title_text}>{lastnews.title}</h2>
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
             ))}
           </div>
         </div>

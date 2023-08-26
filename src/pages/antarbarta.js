@@ -29,7 +29,9 @@ function formatTime(minutes) {
 const antarbarta = ({ antarbartasamachar }) => {
   return (
     <section className={styles.manoranjan_section}>
-            <Head><title>अन्तर्वार्ता</title></Head>
+      <Head>
+        <title>अन्तर्वार्ता</title>
+      </Head>
 
       <div className={styles.E_container}>
         <div className={styles.E_section_title}>
@@ -42,7 +44,7 @@ const antarbarta = ({ antarbartasamachar }) => {
                 <Link href={`/news/${antarbartaItem.id}`}>
                   <Image
                     className={styles.M_image}
-                    src={`https://www.bimaabazar.com/${antarbartaItem.image1}`}
+                    src={`https://prajjwalacharya.pythonanywhere.com/${antarbartaItem.image1}`}
                     alt="antarbarta"
                     width={500}
                     height={400}
@@ -77,11 +79,14 @@ export default antarbarta;
 export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-    headers: {
-      "X-API-Key": apiKey,
-    },
-  });
+  const res = await fetch(
+    "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
+    {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+    }
+  );
   let newsData = await res.json();
   let antarbartasamachar = newsData.filter((news) => news.category === 16);
   antarbartasamachar = antarbartasamachar.sort(

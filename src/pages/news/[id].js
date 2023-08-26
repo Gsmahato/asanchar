@@ -207,7 +207,7 @@ function Newspage({ news }) {
                     <div className={styles.news_author}>
                       <span className={styles.author_icon}>
                         <Image
-                          src={`https://www.bimaabazar.com/${news.image1}`}
+                          src={`https://prajjwalacharya.pythonanywhere.com/${news.image1}`}
                           alt=""
                           width={100}
                           height={100}
@@ -232,7 +232,7 @@ function Newspage({ news }) {
                 <div className={styles.feature_img}>
                   <div className={styles.post_thumbnails}>
                     <Image
-                      src={`https://www.bimaabazar.com/${news.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${news.image1}`}
                       alt=""
                       width={750}
                       height={400}
@@ -344,12 +344,9 @@ function Newspage({ news }) {
   );
 }
 
-
-
 export async function getServerSideProps({ params }) {
-  
   const res = await fetch(
-    `https://www.bimaabazar.com/newsportal/news/${params.id}`
+    `https://prajjwalacharya.pythonanywhere.com/newsportal/news/${params.id}`
   );
   const news = await res.json();
 

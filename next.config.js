@@ -6,7 +6,7 @@ const nextConfig = {
     webpack5: true,
   },
   images: {
-    domains: ["www.bimaabazar.com"],
+    domains: ["prajjwalacharya.pythonanywhere.com"],
     unoptimized: true,
   },
 };

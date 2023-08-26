@@ -29,7 +29,7 @@ const bigyanprabidhi = ({ bigyanprabidhisamachar }) => {
                 <div className={styles.post_img}>
                   <Link href={`/news/${bigyan.id}`}>
                     <Image
-                      src={`https://www.bimaabazar.com/${bigyan.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${bigyan.image1}`}
                       alt="bigyan"
                       width={580}
                       height={508}
@@ -55,7 +55,7 @@ const bigyanprabidhi = ({ bigyanprabidhisamachar }) => {
                     href={`/news/${bigyanre.id}`}
                   >
                     <Image
-                      src={`https://www.bimaabazar.com/${bigyanre.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${bigyanre.image1}`}
                       alt="bigyan"
                       width={276}
                       height={165}
@@ -186,11 +186,14 @@ export default bigyanprabidhi;
 export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-    headers: {
-      "X-API-Key": apiKey,
-    },
-  });
+  const res = await fetch(
+    "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
+    {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+    }
+  );
   let newsData = await res.json();
   let bigyanprabidhisamachar = newsData.filter((news) => news.category === 14);
   bigyanprabidhisamachar = bigyanprabidhisamachar.sort(

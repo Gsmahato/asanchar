@@ -24,7 +24,7 @@ const Admin = () => {
     try {
       // Make API call to authenticate
       const response = await fetch(
-        "https://www.bimaabazar.com/newsportal/login/",
+        "https://prajjwalacharya.pythonanywhere.com/newsportal/login/",
         {
           method: "POST",
           headers: {

@@ -8,7 +8,7 @@ import prachar from "../public/prachar.gif";
 import rightbanner1 from "../public/rightbanner1.gif";
 import { MdArrowForwardIos } from "react-icons/md";
 
-const Rajniti = ({rajnitiNews,trendingNews}) => {
+const Rajniti = ({ rajnitiNews, trendingNews }) => {
   const trendzero = trendingNews[0];
   const trendone = trendingNews[1];
   const trendtwo = trendingNews[2];
@@ -53,14 +53,17 @@ const Rajniti = ({rajnitiNews,trendingNews}) => {
               <div className={styles.samachar_spot_news}>
                 <div className={styles.post_img}>
                   <Link href={`/news/${rajnitifirst.id}`}>
-                    <Image src={`https://www.bimaabazar.com/${rajnitifirst.image1}`} alt="rajniti" width={580} height={508} />
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${rajnitifirst.image1}`}
+                      alt="rajniti"
+                      width={580}
+                      height={508}
+                    />
                   </Link>
                 </div>
                 <div className={styles.post_title_3}>
                   <Link href={`/news/${rajnitifirst.id}`}>
-                    <h4>
-                      {rajnitifirst.title}
-                    </h4>
+                    <h4>{rajnitifirst.title}</h4>
                   </Link>
                 </div>
               </div>
@@ -69,19 +72,26 @@ const Rajniti = ({rajnitiNews,trendingNews}) => {
               className={styles.home_samachar}
               data-device-type="desktop"
             ></div>
-            {rajnitisecond.map((ranews)=>(
-            <div className={styles.span_4} key={ranews.id}>
-              <div className={styles.pradesh_post_news}>
-                <Link className={styles.pradesh_post_news} href={`/news/${ranews.id}`}>
-                  <Image src={`https://www.bimaabazar.com/${ranews.image1}`} alt="rajniti" width={276} height={165} />
-                  <div className={styles.post_content_wrap}>
-                    <h2>{ranews.title}</h2>
-                  </div>
-                </Link>
+            {rajnitisecond.map((ranews) => (
+              <div className={styles.span_4} key={ranews.id}>
+                <div className={styles.pradesh_post_news}>
+                  <Link
+                    className={styles.pradesh_post_news}
+                    href={`/news/${ranews.id}`}
+                  >
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${ranews.image1}`}
+                      alt="rajniti"
+                      width={276}
+                      height={165}
+                    />
+                    <div className={styles.post_content_wrap}>
+                      <h2>{ranews.title}</h2>
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
             ))}
-           
           </div>
         </div>
         <div className={styles.col_right}>
@@ -97,7 +107,12 @@ const Rajniti = ({rajnitiNews,trendingNews}) => {
                         {trendzero.title}
                       </h2>
                     </div>
-                    <Image src={`https://www.bimaabazar.com/${trendzero.image1}`} width={90} height={68} alt="trending" />
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${trendzero.image1}`}
+                      width={90}
+                      height={68}
+                      alt="trending"
+                    />
                   </Link>
                 </div>
               </li>
@@ -110,7 +125,12 @@ const Rajniti = ({rajnitiNews,trendingNews}) => {
                         {trendone.title}
                       </h2>
                     </div>
-                    <Image src={`https://www.bimaabazar.com/${trendone.image1}`} width={90} height={68} alt="trending" />
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${trendone.image1}`}
+                      width={90}
+                      height={68}
+                      alt="trending"
+                    />
                   </Link>
                 </div>
               </li>
@@ -123,7 +143,12 @@ const Rajniti = ({rajnitiNews,trendingNews}) => {
                         {trendtwo.title}
                       </h2>
                     </div>
-                    <Image src={`https://www.bimaabazar.com/${trendtwo.image1}`} width={90} height={68} alt="trending" />
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${trendtwo.image1}`}
+                      width={90}
+                      height={68}
+                      alt="trending"
+                    />
                   </Link>
                 </div>
               </li>
@@ -136,7 +161,12 @@ const Rajniti = ({rajnitiNews,trendingNews}) => {
                         {trendthree.title}
                       </h2>
                     </div>
-                    <Image src={`https://www.bimaabazar.com/${trendthree.image1}`} width={90} height={68} alt="trending" />
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${trendthree.image1}`}
+                      width={90}
+                      height={68}
+                      alt="trending"
+                    />
                   </Link>
                 </div>
               </li>
@@ -149,11 +179,15 @@ const Rajniti = ({rajnitiNews,trendingNews}) => {
                         {trendfour.title}
                       </h2>
                     </div>
-                    <Image src={`https://www.bimaabazar.com/${trendfour.image1}`} width={90} height={68} alt="trending" />
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${trendfour.image1}`}
+                      width={90}
+                      height={68}
+                      alt="trending"
+                    />
                   </Link>
                 </div>
               </li>
-              
             </ul>
           </div>
           {/* <div className={styles.bijnesh_right_2}>

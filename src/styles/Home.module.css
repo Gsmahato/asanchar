@@ -1559,8 +1559,8 @@ white-space: nowrap;
 }
 .entry_content{
   flex: 2;
-  padding-right: 30px;
-  max-width: 814px;
+  padding-right: 1rem;
+  max-width: 750px;
 }
 .post_thumbnails{
   margin-bottom: 28px;

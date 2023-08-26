@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/styles/Home.module.css"
+import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import ANSU from "../public/ANSU.jpg";
@@ -19,21 +19,19 @@ function getMinutesAgo(created_at) {
 function formatTime(minutes) {
   if (minutes < 60) {
     return `${minutes} minutes ago`;
-  } else if (minutes < 1440) { // Less than 24 hours
+  } else if (minutes < 1440) {
+    // Less than 24 hours
     const hours = Math.floor(minutes / 60);
     return `${hours} hours ago`;
   } else {
     const days = Math.floor(minutes / 1440);
-    return `${days} day${days > 1 ? 's' : ''} ago`;
+    return `${days} day${days > 1 ? "s" : ""} ago`;
   }
 }
 
-
-const Entertainment = ({entertainmentNews}) => {
-  const entertainsecond = entertainmentNews.slice(0,2)
-  const entertainthird = entertainmentNews.slice(3,5)
-
-
+const Entertainment = ({ entertainmentNews }) => {
+  const entertainsecond = entertainmentNews.slice(0, 2);
+  const entertainthird = entertainmentNews.slice(3, 5);
 
   return (
     <section className={styles.Entertainment_section}>
@@ -56,68 +54,68 @@ const Entertainment = ({entertainmentNews}) => {
           </h2>
         </div>
         <ul className={styles.E_title_cat_menu_3}>
-              <Link href="/">गशिप</Link>
-              <Link href="/">फिचर</Link>
-              <Link href="/">बलिउड / हलिउड</Link>
-              <Link href="/">मनोरञ्जन भिडियो</Link>
-              <Link href="/">ब्लोअप</Link>
-            </ul>
+          <Link href="/">गशिप</Link>
+          <Link href="/">फिचर</Link>
+          <Link href="/">बलिउड / हलिउड</Link>
+          <Link href="/">मनोरञ्जन भिडियो</Link>
+          <Link href="/">ब्लोअप</Link>
+        </ul>
         <div className={styles.Enter_grid_12}>
-          {entertainsecond.map((entersecond)=>(
-          <div className={styles.merge_2} key={entersecond.id}>
-            <div className={styles.Enter_spot_news}>
-              <Link href={`/news/${entersecond.id}`}>
-                <Image
-                  className={styles.M_image}
-                  src={`https://www.bimaabazar.com/${entersecond.image1}`}
-                  alt="manoranjan"
-                  width={700}
-                  height={600}
-                />
-                <div className={styles.post_content}>
-                  <h2 className={styles.M_title_text}>
-                    {entersecond.title}
-                  </h2>
-                  <div className={styles.title_in}>
-                    <div className={styles.M_post_hour}>
-                      <i>
-                        <FaRegClock />
-                      </i>
-                      <span>{formatTime(getMinutesAgo(entersecond.created_at))}</span>
+          {entertainsecond.map((entersecond) => (
+            <div className={styles.merge_2} key={entersecond.id}>
+              <div className={styles.Enter_spot_news}>
+                <Link href={`/news/${entersecond.id}`}>
+                  <Image
+                    className={styles.M_image}
+                    src={`https://prajjwalacharya.pythonanywhere.com/${entersecond.image1}`}
+                    alt="manoranjan"
+                    width={700}
+                    height={600}
+                  />
+                  <div className={styles.post_content}>
+                    <h2 className={styles.M_title_text}>{entersecond.title}</h2>
+                    <div className={styles.title_in}>
+                      <div className={styles.M_post_hour}>
+                        <i>
+                          <FaRegClock />
+                        </i>
+                        <span>
+                          {formatTime(getMinutesAgo(entersecond.created_at))}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
-          </div>
           ))}
-          {entertainthird.map((enterthird)=>(
-          <div className={styles.span_4} key={enterthird.id}>
-            <div className={styles.Enter_spot_news}>
-              <Link href={`/news/${enterthird.id}`}>
-                <Image
-                  className={styles.M_image}
-                  src={`https://www.bimaabazar.com/${enterthird.image1}`}
-                  alt="manoranjan"
-                  width={500}
-                  height={400}
-                />
-                <div className={styles.post_content}>
-                  <h2 className={styles.E_title_text}>
-                    {enterthird.title}
-                  </h2>
-                  <div className={styles.title_in}>
-                    <div className={styles.M_post_hour}>
-                      <i>
-                        <FaRegClock />
-                      </i>
-                      <span>{formatTime(getMinutesAgo(enterthird.created_at))}</span>
+          {entertainthird.map((enterthird) => (
+            <div className={styles.span_4} key={enterthird.id}>
+              <div className={styles.Enter_spot_news}>
+                <Link href={`/news/${enterthird.id}`}>
+                  <Image
+                    className={styles.M_image}
+                    src={`https://prajjwalacharya.pythonanywhere.com/${enterthird.image1}`}
+                    alt="manoranjan"
+                    width={500}
+                    height={400}
+                  />
+                  <div className={styles.post_content}>
+                    <h2 className={styles.E_title_text}>{enterthird.title}</h2>
+                    <div className={styles.title_in}>
+                      <div className={styles.M_post_hour}>
+                        <i>
+                          <FaRegClock />
+                        </i>
+                        <span>
+                          {formatTime(getMinutesAgo(enterthird.created_at))}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             </div>
-          </div>
           ))}
         </div>
       </div>

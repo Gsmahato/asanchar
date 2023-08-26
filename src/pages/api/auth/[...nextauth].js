@@ -1,17 +1,17 @@
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export default NextAuth({
   providers: [
     CredentialsProvider({
       credentials: {
         email: {
-          label: 'Email',
-          type: 'email',
+          label: "Email",
+          type: "email",
         },
         password: {
-          label: 'Password',
-          type: 'password',
+          label: "Password",
+          type: "password",
         },
       },
       async authorize(credentials, req) {
@@ -20,13 +20,16 @@ export default NextAuth({
           password: credentials.password,
         };
 
-        const res = await fetch('https://www.bimaabazar.com/newsportal/login/', {
-          method: 'POST',
-          body: JSON.stringify(payload),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        const res = await fetch(
+          "https://prajjwalacharya.pythonanywhere.com/newsportal/login/",
+          {
+            method: "POST",
+            body: JSON.stringify(payload),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
         const user = await res.json();
         if (!res.ok) {
@@ -63,5 +66,5 @@ export default NextAuth({
     },
   },
   // Enable debug messages in the console if you are having problems
-  debug: process.env.NODE_ENV === 'development',
+  debug: process.env.NODE_ENV === "development",
 });

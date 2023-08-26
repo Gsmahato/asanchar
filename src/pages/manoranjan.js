@@ -43,7 +43,7 @@ const manoranjan = ({ manoranjansamachar }) => {
                 <Link href={`/news/${manoranjanItem.id}`}>
                   <Image
                     className={styles.M_image}
-                    src={`https://www.bimaabazar.com/${manoranjanItem.image1}`}
+                    src={`https://prajjwalacharya.pythonanywhere.com/${manoranjanItem.image1}`}
                     alt="manoranjan"
                     width={500}
                     height={400}
@@ -78,11 +78,14 @@ export default manoranjan;
 export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-    headers: {
-      "X-API-Key": apiKey,
-    },
-  });
+  const res = await fetch(
+    "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
+    {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+    }
+  );
   let newsData = await res.json();
   let manoranjansamachar = newsData.filter((news) => news.category === 17);
   manoranjansamachar = manoranjansamachar.sort(

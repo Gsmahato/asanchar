@@ -20,19 +20,22 @@ function getMinutesAgo(created_at) {
 function formatTime(minutes) {
   if (minutes < 60) {
     return `${minutes} minutes ago`;
-  } else if (minutes < 1440) { // Less than 24 hours
+  } else if (minutes < 1440) {
+    // Less than 24 hours
     const hours = Math.floor(minutes / 60);
     return `${hours} hours ago`;
   } else {
     const days = Math.floor(minutes / 1440);
-    return `${days} day${days > 1 ? 's' : ''} ago`;
+    return `${days} day${days > 1 ? "s" : ""} ago`;
   }
 }
 
 const bichar = ({ bicharsamachar }) => {
   return (
     <section className={styles.manoranjan_section}>
-            <Head><title>विचार</title></Head>
+      <Head>
+        <title>विचार</title>
+      </Head>
 
       <div className={styles.E_container}>
         <div className={styles.E_section_title}>
@@ -45,7 +48,7 @@ const bichar = ({ bicharsamachar }) => {
                 <Link href={`/news/${bicharItem.id}`}>
                   <Image
                     className={styles.M_image}
-                    src={`https://www.bimaabazar.com/${bicharItem.image1}`}
+                    src={`https://prajjwalacharya.pythonanywhere.com/${bicharItem.image1}`}
                     alt="bichar"
                     width={500}
                     height={400}
@@ -78,11 +81,14 @@ export default bichar;
 export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-    headers: {
-      "X-API-Key": apiKey,
-    },
-  });
+  const res = await fetch(
+    "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
+    {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+    }
+  );
   let newsData = await res.json();
   let bicharsamachar = newsData.filter((news) => news.category === 14);
   bicharsamachar = bicharsamachar.sort(

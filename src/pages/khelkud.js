@@ -43,7 +43,7 @@ const khelkud = ({ khelkudsamachar }) => {
                 <Link href={`/news/${khelkudItem.id}`}>
                   <Image
                     className={styles.M_image}
-                    src={`https://www.bimaabazar.com/${khelkudItem.image1}`}
+                    src={`https://prajjwalacharya.pythonanywhere.com/${khelkudItem.image1}`}
                     alt="khelkud"
                     width={500}
                     height={400}
@@ -78,11 +78,14 @@ export default khelkud;
 export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-    headers: {
-      "X-API-Key": apiKey,
-    },
-  });
+  const res = await fetch(
+    "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
+    {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+    }
+  );
   let newsData = await res.json();
   let khelkudsamachar = newsData.filter((news) => news.category === 13);
   khelkudsamachar = khelkudsamachar.sort(

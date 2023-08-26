@@ -37,7 +37,7 @@ const aarthik = ({ aarthikNews }) => {
               <div className={styles.post_img_2_bijnesh}>
                 <Link href={`/news/${aarthikNewsfirst.id}`}>
                   <Image
-                    src={`https://www.bimaabazar.com/${aarthikNewsfirst.image1}`}
+                    src={`https://prajjwalacharya.pythonanywhere.com/${aarthikNewsfirst.image1}`}
                     alt="aarthik"
                     width={580}
                     height={508}
@@ -65,7 +65,7 @@ const aarthik = ({ aarthikNews }) => {
                     href={`/news/${aarthikItem.id}`}
                   >
                     <Image
-                      src={`https://www.bimaabazar.com/${aarthikItem.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${aarthikItem.image1}`}
                       alt="aarthik"
                       width={386}
                       height={254}
@@ -98,11 +98,14 @@ export default aarthik;
 export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-    headers: {
-      "X-API-Key": apiKey,
-    },
-  });
+  const res = await fetch(
+    "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
+    {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+    }
+  );
   let newsData = await res.json();
   let aarthikNews = newsData.filter((news) => news.category === 10);
   aarthikNews = aarthikNews.sort(

@@ -17,9 +17,9 @@ function truncateContent(content, maxWords) {
   return truncated + (words.length > maxWords ? "..." : "");
 }
 
-const Samachar = ({samacharNews}) => {
+const Samachar = ({ samacharNews }) => {
   const samafirst = samacharNews[0];
-  const samaremaining = samacharNews.slice(1,15)
+  const samaremaining = samacharNews.slice(1, 15);
 
   return (
     <section className={styles.samachar_section}>
@@ -39,21 +39,21 @@ const Samachar = ({samacharNews}) => {
           <div className={styles.grid_12}>
             <div className={styles.span_12}>
               <div className={styles.samachar_spot_news} key={samafirst.id}>
-                <div className={styles.post_img} >
+                <div className={styles.post_img}>
                   <Link href={`/news/${samafirst.id}`}>
-                    <Image src={`https://www.bimaabazar.com/${samafirst.image1}`} 
-                    alt="samachar" width={580} height={508} />
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${samafirst.image1}`}
+                      alt="samachar"
+                      width={580}
+                      height={508}
+                    />
                   </Link>
                 </div>
                 <div className={styles.post_title}>
                   <Link href={`/news/${samafirst.id}`}>
-                    <h4>
-                      {samafirst.title}
-                    </h4>
+                    <h4>{samafirst.title}</h4>
                   </Link>
-                  <p>
-                  {truncateContent(samafirst.content, 40)}
-                  </p>
+                  <p>{truncateContent(samafirst.content, 40)}</p>
                 </div>
               </div>
             </div>
@@ -61,19 +61,27 @@ const Samachar = ({samacharNews}) => {
               className={styles.home_samachar}
               data-device-type="desktop"
             ></div>
-            {samaremaining.map((remainingNews)=>(
-            <div className={styles.span_6} key={remainingNews.id}>
-              <div className={styles.post_1tr}>
-                <Link className={styles.post_con} href={`/news/${remainingNews.id}`}>
-                  <Image src={`https://www.bimaabazar.com/${remainingNews.image1}`}  alt="samachar" width={134} height={82} />
-                  <div className={styles.content_wrap}>
-                    <h2 className={styles.title_text}>
-                      {remainingNews.title}
-                    </h2>
-                  </div>
-                </Link>
+            {samaremaining.map((remainingNews) => (
+              <div className={styles.span_6} key={remainingNews.id}>
+                <div className={styles.post_1tr}>
+                  <Link
+                    className={styles.post_con}
+                    href={`/news/${remainingNews.id}`}
+                  >
+                    <Image
+                      src={`https://prajjwalacharya.pythonanywhere.com/${remainingNews.image1}`}
+                      alt="samachar"
+                      width={134}
+                      height={82}
+                    />
+                    <div className={styles.content_wrap}>
+                      <h2 className={styles.title_text}>
+                        {remainingNews.title}
+                      </h2>
+                    </div>
+                  </Link>
+                </div>
               </div>
-            </div>
             ))}
           </div>
         </div>

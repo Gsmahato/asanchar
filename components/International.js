@@ -31,7 +31,7 @@ const International = ({ internationalNews }) => {
                 <div className={styles.post_img}>
                   <Link href={`/news/${internationalfirst.id}`}>
                     <Image
-                      src={`https://www.bimaabazar.com/${internationalfirst.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${internationalfirst.image1}`}
                       alt=""
                       width={580}
                       height={508}
@@ -57,7 +57,7 @@ const International = ({ internationalNews }) => {
                     href={`/news/${bigyansecond.id}`}
                   >
                     <Image
-                      src={`https://www.bimaabazar.com/${bigyansecond.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${bigyansecond.image1}`}
                       alt=""
                       width={276}
                       height={165}

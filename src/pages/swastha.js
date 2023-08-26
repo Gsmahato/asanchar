@@ -24,7 +24,9 @@ const swastha = ({ swasthaNews }) => {
 
   return (
     <section className={styles.bijnesh_samachar}>
-            <Head><title>स्वास्थ्य</title></Head>
+      <Head>
+        <title>स्वास्थ्य</title>
+      </Head>
 
       <div className={styles.news_container}>
         <div className={styles.col_left_bijnesh}>
@@ -36,7 +38,7 @@ const swastha = ({ swasthaNews }) => {
               <div className={styles.post_img_2_bijnesh}>
                 <Link href={`/news/${swasthaNewsfirst.id}`}>
                   <Image
-                    src={`https://www.bimaabazar.com/${swasthaNewsfirst.image1}`}
+                    src={`https://prajjwalacharya.pythonanywhere.com/${swasthaNewsfirst.image1}`}
                     alt="swastha"
                     width={580}
                     height={508}
@@ -64,7 +66,7 @@ const swastha = ({ swasthaNews }) => {
                     href={`/news/${swasthaItem.id}`}
                   >
                     <Image
-                      src={`https://www.bimaabazar.com/${swasthaItem.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${swasthaItem.image1}`}
                       alt="swastha"
                       width={386}
                       height={254}
@@ -97,11 +99,14 @@ export default swastha;
 export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-    headers: {
-      "X-API-Key": apiKey,
-    },
-  });
+  const res = await fetch(
+    "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
+    {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+    }
+  );
   let newsData = await res.json();
   let swasthaNews = newsData.filter((news) => news.category === 12);
   swasthaNews = swasthaNews.sort(

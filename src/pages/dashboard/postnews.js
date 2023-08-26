@@ -18,12 +18,11 @@ const postnews = () => {
   const [image, setImage] = useState(null);
   const [categories, setCategories] = useState([]);
 
-
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const response = await fetch(
-          "https://www.bimaabazar.com/newsportal/categories/"
+          "https://prajjwalacharya.pythonanywhere.com/newsportal/categories/"
         );
         if (response.ok) {
           const data = await response.json();
@@ -79,7 +78,7 @@ const postnews = () => {
       const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
       const response = await fetch(
-        "https://www.bimaabazar.com/newsportal/news/",
+        "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
         {
           method: "POST",
           headers: {
@@ -102,7 +101,6 @@ const postnews = () => {
         toast.success("News Posted successfully", {
           position: toast.POSITION.TOP_CENTER,
         });
-
       } else {
         console.log("An error occurred");
         toast.error("failed", {
@@ -195,7 +193,7 @@ const postnews = () => {
                         <div className={styles.row}>
                           <div className={styles.content_col}>
                             <div className={styles.content_col_form_group}>
-                            <input
+                              <input
                                 type="text"
                                 name="author"
                                 required
@@ -283,7 +281,7 @@ const postnews = () => {
                       </li>
                     </ul>
                   </form>
-                  <ToastContainer/>
+                  <ToastContainer />
                 </div>
               </div>
             </div>

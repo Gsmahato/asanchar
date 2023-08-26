@@ -29,7 +29,7 @@ const rajniti = ({ rajnitiNews, newsData }) => {
                 <div className={styles.post_img}>
                   <Link href={`/news/${rajnitiNewsfirst.id}`}>
                     <Image
-                      src={`https://www.bimaabazar.com/${rajnitiNewsfirst.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${rajnitiNewsfirst.image1}`}
                       alt="rajniti"
                       width={580}
                       height={508}
@@ -55,7 +55,7 @@ const rajniti = ({ rajnitiNews, newsData }) => {
                     href={`/news/${ranews.id}`}
                   >
                     <Image
-                      src={`https://www.bimaabazar.com/${ranews.image1}`}
+                      src={`https://prajjwalacharya.pythonanywhere.com/${ranews.image1}`}
                       alt="rajniti"
                       width={276}
                       height={165}
@@ -84,7 +84,7 @@ const rajniti = ({ rajnitiNews, newsData }) => {
                         </h2>
                       </div>
                       <Image
-                        src={`https://www.bimaabazar.com/${trendNews.image1}`}
+                        src={`https://prajjwalacharya.pythonanywhere.com/${trendNews.image1}`}
                         width={90}
                         height={68}
                         alt="trending"
@@ -125,11 +125,14 @@ export default rajniti;
 export async function getServerSideProps() {
   const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
 
-  const res = await fetch("https://www.bimaabazar.com/newsportal/news/", {
-    headers: {
-      "X-API-Key": apiKey,
-    },
-  });
+  const res = await fetch(
+    "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
+    {
+      headers: {
+        "X-API-Key": apiKey,
+      },
+    }
+  );
   let newsData = await res.json();
   let rajnitiNews = newsData.filter((news) => news.category === 9);
   rajnitiNews = rajnitiNews.sort(

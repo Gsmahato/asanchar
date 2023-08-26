@@ -6,7 +6,6 @@ const allnews = ({ newsList }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
-
   const handleDelete = async (id) => {
     const isConfirmed = window.confirm(
       "Are you sure you want to delete this news article?"
@@ -17,7 +16,7 @@ const allnews = ({ newsList }) => {
 
     try {
       const response = await fetch(
-        `https://www.bimaabazar.com/newsportal/news/${id}`,
+        `https://prajjwalacharya.pythonanywhere.com/newsportal/news/${id}`,
         {
           method: "DELETE",
         }
@@ -37,12 +36,12 @@ const allnews = ({ newsList }) => {
   };
 
   const reversedNewsList = [...newsList].reverse();
-const indexOfLastItem = currentPage * itemsPerPage;
-const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-const currentNewsList = reversedNewsList.slice(
-  indexOfFirstItem,
-  indexOfLastItem
-);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentNewsList = reversedNewsList.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -94,7 +93,9 @@ const currentNewsList = reversedNewsList.slice(
                   </table>
                 </div>
                 <div className={styles.pagination}>
-                  {Array.from({ length: Math.ceil(newsList.length / itemsPerPage) }).map((_, index) => (
+                  {Array.from({
+                    length: Math.ceil(newsList.length / itemsPerPage),
+                  }).map((_, index) => (
                     <span key={index} onClick={() => paginate(index + 1)}>
                       {index + 1}
                     </span>
@@ -109,19 +110,18 @@ const currentNewsList = reversedNewsList.slice(
   );
 };
 
-
 export async function getServerSideProps() {
   try {
     const apiKey = process.env.NEXT_PUBLIC_NEWS_API_KEY;
     const response = await fetch(
-      "https://www.bimaabazar.com/newsportal/news/",
+      "https://prajjwalacharya.pythonanywhere.com/newsportal/news/",
       {
         headers: {
-          'X-API-Key': apiKey,
+          "X-API-Key": apiKey,
         },
       }
     );
-    
+
     if (response.ok) {
       const data = await response.json();
       return {
