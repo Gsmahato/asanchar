@@ -70,49 +70,49 @@ export async function getServerSideProps() {
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
 
-  let mukhyaNews = newsData.filter((news) => news.category === 18);
+  let mukhyaNews = newsData.filter((news) => news.category === 22);
   mukhyaNews = mukhyaNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-  let samacharNews = newsData.filter((news) => news.category === 8);
+  let samacharNews = newsData.filter((news) => news.category === 21);
   samacharNews = samacharNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-  let aarthikNews = newsData.filter((news) => news.category === 10);
+  let aarthikNews = newsData.filter((news) => news.category === 24);
   aarthikNews = aarthikNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-  let rajnitiNews = newsData.filter((news) => news.category === 9);
+  let rajnitiNews = newsData.filter((news) => news.category === 23);
   rajnitiNews = rajnitiNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-  let entertainmentNews = newsData.filter((news) => news.category === 17);
+  let entertainmentNews = newsData.filter((news) => news.category === 31);
   entertainmentNews = entertainmentNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
 
-  let bigyanprabidhiNews = newsData.filter((news) => news.category === 11);
+  let bigyanprabidhiNews = newsData.filter((news) => news.category === 25);
   bigyanprabidhiNews = bigyanprabidhiNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
 
-  let khelkudNews = newsData.filter((news) => news.category === 13);
+  let khelkudNews = newsData.filter((news) => news.category === 27);
   khelkudNews = khelkudNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-  let healthNews = newsData.filter((news) => news.category === 12);
+  let healthNews = newsData.filter((news) => news.category === 26);
   healthNews = healthNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-  let internationalNews = newsData.filter((news) => news.category === 15);
+  let internationalNews = newsData.filter((news) => news.category === 29);
   internationalNews = internationalNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-  let interviewNews = newsData.filter((news) => news.category === 16);
+  let interviewNews = newsData.filter((news) => news.category === 30);
   interviewNews = interviewNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
-  let thoughtNews = newsData.filter((news) => news.category === 16);
+  let thoughtNews = newsData.filter((news) => news.category === 28);
   thoughtNews = thoughtNews.sort(
     (a, b) => new Date(b.created_at) - new Date(a.created_at)
   );
